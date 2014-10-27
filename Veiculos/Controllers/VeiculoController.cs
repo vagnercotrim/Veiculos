@@ -45,7 +45,7 @@ namespace Veiculos.Controllers
                 {
                     _veiculoDao.Save(veiculo);
 
-                    return RedirectToAction("Detalhar", "Veiculo", new { id = veiculo.Id });
+                    return RedirectToAction("Detalhar", "Veiculo", new {id = veiculo.Id});
                 }
 
                 return View(veiculo);
@@ -55,6 +55,53 @@ namespace Veiculos.Controllers
             {
                 return View(veiculo);
             }
+        }
+
+        public ActionResult Editar(int id)
+        {
+            Veiculo veiculo = _veiculoDao.Get(id);
+
+            if (veiculo == null)
+                return RedirectToAction("Index", "Veiculo");
+
+            return View(veiculo);
+        }
+
+        [HttpPost]
+        [Transaction]
+        public ActionResult Editar(Veiculo veiculo)
+        {
+            try
+            {
+                Veiculo noBanco = _veiculoDao.Get(veiculo.Id);
+                noBanco.Atualiza(veiculo);
+
+                ValidationResult result = _validation.Validate(noBanco);
+
+                if (result.IsValid)
+                {
+                    _veiculoDao.Update(noBanco);
+
+                    return RedirectToAction("Detalhar", new {id = noBanco.Id});
+                }
+
+                return View(veiculo);
+
+            }
+            catch (Exception)
+            {
+                return View(veiculo);
+            }
+        }
+
+        public ActionResult Detalhar(int id)
+        {
+            Veiculo veiculo = _veiculoDao.Get(id);
+
+            if (veiculo == null)
+                return RedirectToAction("Index", "Veiculo");
+
+            return View(veiculo);
         }
 
     }

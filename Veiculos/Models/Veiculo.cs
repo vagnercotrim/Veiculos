@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Veiculos.Models
 {
@@ -19,6 +16,14 @@ namespace Veiculos.Models
         public virtual String Modelo { get; set; }
 
         public virtual String Placa { get; set; }
+        
+        public virtual void Atualiza(Veiculo veiculo)
+        {
+            AnoModelo = veiculo.AnoModelo;
+            AnoFabricacao = veiculo.AnoFabricacao;
+            Marca = veiculo.Marca;
+            Modelo = veiculo.Marca;
+        }
 
     }
 }

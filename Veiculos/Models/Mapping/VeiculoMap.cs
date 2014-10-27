@@ -17,7 +17,7 @@ namespace Veiculos.Models.Mapping
             Map(v => v.AnoFabricacao).Not.Nullable();
             Map(v => v.Marca).Not.Nullable();
             Map(v => v.Modelo).Not.Nullable();
-            Map(v => v.Placa).Unique();
+            Map(v => v.Placa).Not.Nullable().Unique();
         }
 
     }
