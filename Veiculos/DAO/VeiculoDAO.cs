@@ -49,13 +49,11 @@ namespace Veiculos.DAO
             return criteria.UniqueResult<Veiculo>();
         }
 
-        public IList<Veiculo> Paginacao()
+        public Paging<Veiculo> Paginacao()
         {
             QueryPaginate pag = new QueryPaginate(_session);
 
-            long c;
-
-            return pag.GetPagedData<Veiculo>(_session.CreateCriteria<Veiculo>(), 1, 5, out c);
+            return pag.GetPagedData<Veiculo>(_session.CreateCriteria<Veiculo>(), 1, 5);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
@@ -15,7 +16,7 @@ namespace Veiculos.Infra.NHibernate
             _session = session;
         }
 
-        public IList<T> GetPagedData<T>(ICriteria criteria, int page, int pageSize, out long count)
+        public Paging<T> GetPagedData<T>(ICriteria criteria, int page, int pageSize)
         {
             var all = new List<T>();
 
@@ -29,8 +30,10 @@ namespace Veiculos.Infra.NHibernate
             foreach (var o in (IList)results[0])
                 all.Add((T)o);
 
-            count = (long)((IList)results[1])[0];
-            return all;
+            long count = (long)((IList)results[1])[0];
+            int totalPage = (int) Math.Ceiling(count / (decimal)pageSize);
+
+            return new Paging<T>(all, pageSize, page, totalPage, count);
         }
 
     }
