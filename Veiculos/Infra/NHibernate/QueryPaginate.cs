@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
 using NHibernate.Criterion;
 
@@ -16,25 +17,27 @@ namespace Veiculos.Infra.NHibernate
             _session = session;
         }
 
-        public Paging<T> GetPagedData<T>(ICriteria criteria, int page, int pageSize)
+        public Paging<T> GetPagedData<T>(ICriteria criteria, int pageCount, int pageSize)
         {
-            var all = new List<T>();
-
             ICriteria criteriaRowCount = criteria.Clone() as ICriteria;
             
             IList results = _session.CreateMultiCriteria()
-                                .Add(criteria.SetFirstResult((page - 1) * pageSize).SetMaxResults(pageSize))
+                                .Add(criteria.SetFirstResult((pageCount - 1) * pageSize).SetMaxResults(pageSize))
                                 .Add(criteriaRowCount.SetProjection(Projections.RowCountInt64()))
                                 .List();
 
-            foreach (var o in (IList)results[0])
-                all.Add((T)o);
+            var all = ArrayToList<T>(results);
 
             long count = (long)((IList)results[1])[0];
             int totalPage = (int) Math.Ceiling(count / (decimal)pageSize);
 
-            return new Paging<T>(all, pageSize, page, totalPage, count);
+            return new Paging<T>(all.ToList(), pageSize, pageCount, totalPage, count);
         }
 
+        private IEnumerable<T> ArrayToList<T>(IList results)
+        {
+            foreach (var o in (IList) results[0])
+                yield return (T) o;
+        }
     }
 }
