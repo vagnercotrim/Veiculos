@@ -52,7 +52,7 @@ namespace Veiculos.DAO
         {
             CriteriaPaginate paginate = new CriteriaPaginate(_session);
 
-            return paginate.GetPagedData<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
+            return paginate.GetResult<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
         }
 
     }

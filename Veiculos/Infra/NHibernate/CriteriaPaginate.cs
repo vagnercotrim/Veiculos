@@ -16,7 +16,7 @@ namespace Veiculos.Infra.NHibernate
             _session = session;
         }
 
-        public Paging<T> GetPagedData<T>(ICriteria criteria, int pageCount, int pageSize)
+        public Paging<T> GetResult<T>(ICriteria criteria, int pageCount, int pageSize)
         {
             ICriteria criteriaRowCount = criteria.Clone() as ICriteria;
             
