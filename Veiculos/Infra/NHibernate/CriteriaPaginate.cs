@@ -16,12 +16,12 @@ namespace Veiculos.Infra.NHibernate
             _session = session;
         }
 
-        public Paging<T> GetResult<T>(ICriteria criteria, int pageCount, int pageSize)
+        public Paging<T> GetResult<T>(ICriteria criteria, int pageNum, int pageSize)
         {
             ICriteria criteriaRowCount = criteria.Clone() as ICriteria;
             
             IList results = _session.CreateMultiCriteria()
-                                .Add(criteria.SetFirstResult((pageCount - 1) * pageSize).SetMaxResults(pageSize))
+                                .Add(criteria.SetFirstResult((pageNum - 1) * pageSize).SetMaxResults(pageSize))
                                 .Add(criteriaRowCount.SetProjection(Projections.RowCountInt64()))
                                 .List();
 
@@ -29,7 +29,7 @@ namespace Veiculos.Infra.NHibernate
 
             long count = (long)((IList)results[1])[0];
 
-            return new Paging<T>(all, pageSize, pageCount, TotalPage(pageSize, count), count);
+            return new Paging<T>(all, pageSize, pageNum, TotalPage(pageSize, count), count);
         }
 
         private static int TotalPage(int pageSize, long count)
