@@ -1,7 +1,6 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
 using Veiculos.Models.Mapping;
 
 namespace Veiculos.Infra.NHibernate

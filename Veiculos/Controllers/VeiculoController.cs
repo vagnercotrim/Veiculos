@@ -1,6 +1,5 @@
 ﻿using FluentValidation.Results;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using Veiculos.DAO;
 using Veiculos.Infra.NHibernate;

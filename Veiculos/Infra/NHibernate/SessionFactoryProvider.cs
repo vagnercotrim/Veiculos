@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using NHibernate;
+﻿using NHibernate;
 using Ninject.Activation;
 
 namespace Veiculos.Infra.NHibernate
