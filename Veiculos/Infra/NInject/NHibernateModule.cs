@@ -16,6 +16,8 @@ namespace Veiculos.Infra.NInject
             Kernel.Bind<ISession>().ToMethod(context => Kernel.Get<ISessionFactory>().OpenSession()).InRequestScope();
 
             Kernel.BindFilter<TransactionFilter>(FilterScope.Action, 0).WhenActionMethodHas<TransactionAttribute>();
+
+            Kernel.Bind<QueryPaginate>().To<QueryPaginate>().InRequestScope();
         }
     }
 }
