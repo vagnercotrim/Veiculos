@@ -13,11 +13,13 @@ namespace Veiculos.DAO
 
         private readonly GenericDAO<Veiculo> _dao;
         private readonly ISession _session;
+        private readonly CriteriaPaginate _paginate;
 
-        public VeiculoDAO(ISession session)
+        public VeiculoDAO(ISession session, CriteriaPaginate paginate)
         {
             _dao = new GenericDAO<Veiculo>(session);
             _session = session;
+            _paginate = paginate;
         }
 
         public Veiculo Get(int id)
@@ -50,9 +52,7 @@ namespace Veiculos.DAO
         
         public Paging<Veiculo> GetAll(int pagina, int registros)
         {
-            CriteriaPaginate paginate = new CriteriaPaginate(_session);
-
-            return paginate.GetResult<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
+            return _paginate.GetResult<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
         }
 
     }
