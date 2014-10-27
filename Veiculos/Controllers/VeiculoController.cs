@@ -23,7 +23,7 @@ namespace Veiculos.Controllers
 
         public ActionResult Index()
         {
-            IList<Veiculo> veiculos = _veiculoDao.Paginacao().List;
+            Paging<Veiculo> veiculos = _veiculoDao.Paginacao();
             
             return View(veiculos);
         }

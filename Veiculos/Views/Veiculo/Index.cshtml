@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Veiculos.Models.Veiculo>
+﻿@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Veiculo>
 
 @{
     ViewBag.Title = "Index";
@@ -12,24 +12,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AnoModelo)
+            <span>Ano do modelo</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AnoFabricacao)
+            <span>Ano de fabricação</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Marca)
+            <span>Marca</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Modelo)
+            <span>Modelo</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Placa)
+            <span>Placa</span>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.List) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.AnoModelo)

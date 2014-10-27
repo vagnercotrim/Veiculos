@@ -26,15 +26,15 @@ namespace Veiculos.Infra.NHibernate
                                 .Add(criteriaRowCount.SetProjection(Projections.RowCountInt64()))
                                 .List();
 
-            var all = ArrayToList<T>(results);
+            IEnumerable<T> all = ArrayToEnumerable<T>(results);
 
             long count = (long)((IList)results[1])[0];
             int totalPage = (int) Math.Ceiling(count / (decimal)pageSize);
 
-            return new Paging<T>(all.ToList(), pageSize, pageCount, totalPage, count);
+            return new Paging<T>(all, pageSize, pageCount, totalPage, count);
         }
 
-        private IEnumerable<T> ArrayToList<T>(IList results)
+        private IEnumerable<T> ArrayToEnumerable<T>(IList results)
         {
             foreach (var o in (IList) results[0])
                 yield return (T) o;
