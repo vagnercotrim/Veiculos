@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using NHibernate;
 using NHibernate.Criterion;
+using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
 
 namespace Veiculos.DAO
 {
     public class VeiculoDAO
     {
-        
+
         private readonly GenericDAO<Veiculo> _dao;
         private readonly ISession _session;
 
@@ -34,7 +35,7 @@ namespace Veiculos.DAO
         {
             _dao.Save(veiculo);
         }
-        
+
         public void Update(Veiculo veiculo)
         {
             _dao.Update(veiculo);
@@ -46,6 +47,15 @@ namespace Veiculos.DAO
                                         .Add(Restrictions.Eq("Placa", placa));
 
             return criteria.UniqueResult<Veiculo>();
+        }
+
+        public IList<Veiculo> Paginacao()
+        {
+            QueryPaginate pag = new QueryPaginate(_session);
+
+            long c;
+
+            return pag.GetPagedData<Veiculo>(_session.CreateCriteria<Veiculo>(), 1, 5, out c);
         }
 
     }

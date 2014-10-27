@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Infra\FluentValidation\NinjectValidatorFactory.cs" />
     <Compile Include="Infra\NHibernate\CreateSessionFactory.cs" />
+    <Compile Include="Infra\NHibernate\QueryPaginate.cs" />
     <Compile Include="Infra\NHibernate\SessionFactoryProvider.cs" />
     <Compile Include="Infra\NHibernate\TransactionAttribute.cs" />
     <Compile Include="Infra\NHibernate\TransactionFilter.cs" />

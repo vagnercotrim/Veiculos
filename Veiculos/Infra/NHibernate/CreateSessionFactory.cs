@@ -16,7 +16,7 @@ namespace Veiculos.Infra.NHibernate
                         @"Data Source=G1711MAX\sqlexpress;Password=chapado;User ID=sa;Initial Catalog=veiculos;Application Name=Veiculos;")
                         .ShowSql())
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<VeiculoMap>())
-                .ExposeConfiguration(c => new SchemaExport(c).Create(false, true)) // TODO Remover depois de definir todos os models
+                //.ExposeConfiguration(c => new SchemaExport(c).Create(false, true)) // TODO Remover depois de definir todos os models
                 .BuildSessionFactory();
         }
 

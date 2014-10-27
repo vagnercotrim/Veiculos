@@ -23,8 +23,8 @@ namespace Veiculos.Controllers
 
         public ActionResult Index()
         {
-            IList<Veiculo> veiculos = _veiculoDao.GetAll();
-
+            IList<Veiculo> veiculos = _veiculoDao.Paginacao();
+            
             return View(veiculos);
         }
 
@@ -93,7 +93,7 @@ namespace Veiculos.Controllers
                 return View(veiculo);
             }
         }
-
+        
         public ActionResult Detalhar(int id)
         {
             Veiculo veiculo = _veiculoDao.Get(id);
