@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Text.RegularExpressions;
 using FluentValidation;
 
 namespace Veiculos.Models.Validation
@@ -11,7 +8,11 @@ namespace Veiculos.Models.Validation
 
         public VeiculoValidation()
         {
+            RuleFor(v => v.Marca).NotEmpty();
+            RuleFor(v => v.Modelo).NotEmpty();
+            
             RuleFor(v => v.Placa).Length(8);
+            RuleFor(v => v.Placa).Matches(new Regex(@"^[a-zA-Z]{3}\-\d{4}$")).WithMessage("O número da placa é inválido.");
         }
 
     }

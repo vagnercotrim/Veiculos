@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using FluentValidation.Results;
 using Veiculos.DAO;
+using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
+using Veiculos.Models.Validation;
 
 namespace Veiculos.Controllers
 {
@@ -12,10 +13,12 @@ namespace Veiculos.Controllers
     {
 
         private readonly VeiculoDAO _veiculoDao;
+        private readonly VeiculoValidation _validation;
 
-        public VeiculoController(VeiculoDAO veiculoDao)
+        public VeiculoController(VeiculoDAO veiculoDao, VeiculoValidation validation)
         {
             _veiculoDao = veiculoDao;
+            _validation = validation;
         }
 
         public ActionResult Index()
@@ -24,5 +27,35 @@ namespace Veiculos.Controllers
 
             return View(veiculos);
         }
+
+        public ActionResult Novo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Transaction]
+        public ActionResult Novo(Veiculo veiculo)
+        {
+            try
+            {
+                ValidationResult result = _validation.Validate(veiculo);
+
+                if (result.IsValid)
+                {
+                    _veiculoDao.Save(veiculo);
+
+                    return RedirectToAction("Detalhar", "Veiculo", new { id = veiculo.Id });
+                }
+
+                return View(veiculo);
+
+            }
+            catch (Exception)
+            {
+                return View(veiculo);
+            }
+        }
+
     }
 }
