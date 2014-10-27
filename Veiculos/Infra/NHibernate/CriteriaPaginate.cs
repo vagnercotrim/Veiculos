@@ -6,12 +6,12 @@ using NHibernate.Criterion;
 
 namespace Veiculos.Infra.NHibernate
 {
-    public class QueryPaginate
+    public class CriteriaPaginate
     {
 
         private readonly ISession _session;
 
-        public QueryPaginate(ISession session)
+        public CriteriaPaginate(ISession session)
         {
             _session = session;
         }

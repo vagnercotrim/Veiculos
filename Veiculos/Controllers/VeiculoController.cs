@@ -21,10 +21,10 @@ namespace Veiculos.Controllers
             _validation = validation;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
-            Paging<Veiculo> veiculos = _veiculoDao.Paginacao();
-            
+            Paging<Veiculo> veiculos = _veiculoDao.GetAll(pagina, 5);
+
             return View(veiculos);
         }
 

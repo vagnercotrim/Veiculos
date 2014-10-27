@@ -47,12 +47,12 @@ namespace Veiculos.DAO
 
             return criteria.UniqueResult<Veiculo>();
         }
-
-        public Paging<Veiculo> Paginacao()
+        
+        public Paging<Veiculo> GetAll(int pagina, int registros)
         {
-            QueryPaginate pag = new QueryPaginate(_session);
+            CriteriaPaginate paginate = new CriteriaPaginate(_session);
 
-            return pag.GetPagedData<Veiculo>(_session.CreateCriteria<Veiculo>(), 1, 5);
+            return paginate.GetPagedData<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
         }
 
     }
