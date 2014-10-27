@@ -28,9 +28,13 @@ namespace Veiculos.Infra.NHibernate
             IEnumerable<T> all = ArrayToEnumerable<T>(results);
 
             long count = (long)((IList)results[1])[0];
-            int totalPage = (int) Math.Ceiling(count / (decimal)pageSize);
 
-            return new Paging<T>(all, pageSize, pageCount, totalPage, count);
+            return new Paging<T>(all, pageSize, pageCount, TotalPage(pageSize, count), count);
+        }
+
+        private static int TotalPage(int pageSize, long count)
+        {
+            return (int) Math.Ceiling(count/(decimal) pageSize);
         }
 
         private IEnumerable<T> ArrayToEnumerable<T>(IList results)
