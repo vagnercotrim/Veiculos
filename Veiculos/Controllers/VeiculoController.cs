@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using FluentValidation.Results;
 using Veiculos.DAO;
 using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
