@@ -54,3 +54,17 @@
 }
 
 </table>
+
+<div>
+    @for (int pagina = 1; pagina <= Model.TotalPage; pagina++)
+    {
+        if (Model.PageNum == pagina)
+        {
+            <strong>@pagina</strong>
+        }
+        else
+        {
+            <strong>@Html.ActionLink(pagina.ToString(), "Index", "Veiculo", new { pagina = pagina }, null)</strong>
+        }
+    }
+</div>
