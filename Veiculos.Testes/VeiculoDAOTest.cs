@@ -5,10 +5,10 @@ using Veiculos.Models;
 
 namespace Veiculos.Testes
 {
-    [SetUpFixture]
-    public class VeiculoDAOTest : AbstractInMemoryDataFixture
+    [TestFixture]
+    public class VeiculoDAOTest : InMemoryDatabaseTest
     {
-        
+
         [Test]
         public void TestMethod1()
         {
