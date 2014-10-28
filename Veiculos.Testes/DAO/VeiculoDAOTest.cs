@@ -2,8 +2,9 @@
 using Veiculos.DAO;
 using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
+using Veiculos.Testes.Helper;
 
-namespace Veiculos.Testes
+namespace Veiculos.Testes.DAO
 {
     [TestFixture]
     public class VeiculoDAOTest : InMemoryDatabaseTest

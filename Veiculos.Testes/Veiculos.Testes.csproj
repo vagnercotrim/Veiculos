@@ -69,8 +69,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="InMemoryDatabaseTest.cs" />
-    <Compile Include="VeiculoDAOTest.cs" />
+    <Compile Include="DAO\VeiculoDAOTest.cs" />
+    <Compile Include="Helper\InMemoryDatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

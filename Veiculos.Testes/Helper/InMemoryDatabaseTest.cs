@@ -6,7 +6,7 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using Veiculos.Models.Mapping;
 
-namespace Veiculos.Testes
+namespace Veiculos.Testes.Helper
 {
     public class InMemoryDatabaseTest : IDisposable
     {
