@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NHibernateController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\VeiculoDAO.cs" />
@@ -192,7 +193,7 @@
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
     <Compile Include="Infra\NHibernate\SessionFactoryProvider.cs" />
-    <Compile Include="Infra\NHibernate\Statistics.cs" />
+    <Compile Include="Infra\NHibernate\StatisticsProvider.cs" />
     <Compile Include="Infra\NHibernate\TransactionAttribute.cs" />
     <Compile Include="Infra\NHibernate\TransactionFilter.cs" />
     <Compile Include="Infra\NInject\DAOModule.cs" />
@@ -258,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\NHibernate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

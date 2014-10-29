@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using NHibernate;
+using NHibernate.Stat;
 using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common;
@@ -18,7 +19,7 @@ namespace Veiculos.Infra.NInject
             Kernel.BindFilter<TransactionFilter>(FilterScope.Action, 0).WhenActionMethodHas<TransactionAttribute>();
 
             Kernel.Bind<CriteriaPaginate>().To<CriteriaPaginate>().InRequestScope();
-            Kernel.Bind<Statistics>().To<Statistics>();
+            Kernel.Bind<IStatistics>().ToProvider<StatisticsProvider>().InSingletonScope();
         }
     }
 }

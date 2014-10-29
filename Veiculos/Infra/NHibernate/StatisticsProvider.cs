@@ -1,19 +1,20 @@
 ﻿using NHibernate;
 using NHibernate.Stat;
+using Ninject.Activation;
 
 namespace Veiculos.Infra.NHibernate
 {
-    public class Statistics
+    public class StatisticsProvider : Provider<IStatistics>
     {
 
         private readonly ISessionFactory _sessionFactory;
 
-        public Statistics(ISessionFactory sessionFactory)
+        public StatisticsProvider(ISessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
         }
 
-        public IStatistics Stats()
+        protected override IStatistics CreateInstance(IContext context)
         {
             return _sessionFactory.Statistics;
         }
