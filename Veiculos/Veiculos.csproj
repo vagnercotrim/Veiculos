@@ -198,6 +198,7 @@
     <Compile Include="Infra\NInject\FluentValidationModule.cs" />
     <Compile Include="Infra\NInject\NHibernateModule.cs" />
     <Compile Include="Models\Mapping\VeiculoMap.cs" />
+    <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Validation\VeiculoValidation.cs" />
     <Compile Include="Models\Veiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

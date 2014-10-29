@@ -26,6 +26,9 @@
         <th>
             <span>Placa</span>
         </th>
+        <th>
+            <span>Data de aquisição</span>
+        </th>
         <th></th>
     </tr>
 
@@ -45,6 +48,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Placa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAquisicao)
         </td>
         <td>
             @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
