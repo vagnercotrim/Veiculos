@@ -189,7 +189,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infra\FluentValidation\NinjectValidatorFactory.cs" />
-    <Compile Include="Infra\NHibernate\CreateSessionFactory.cs" />
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
     <Compile Include="Infra\NHibernate\SessionFactoryProvider.cs" />
