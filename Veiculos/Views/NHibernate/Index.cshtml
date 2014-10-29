@@ -1,0 +1,25 @@
+﻿@model NHibernate.Stat.IStatistics
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>Veiculo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            EntityNames
+        </dt>
+
+        <dd>
+            @foreach (var m in Model.EntityNames)
+            {
+                <span>@m, </span>
+            }
+        </dd>
+
+    </dl>
+</div>

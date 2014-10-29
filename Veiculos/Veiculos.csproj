@@ -255,10 +255,10 @@
     <Content Include="Views\Veiculo\Novo.cshtml" />
     <Content Include="Views\Veiculo\Detalhar.cshtml" />
     <Content Include="Views\Veiculo\Editar.cshtml" />
+    <Content Include="Views\NHibernate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NHibernate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

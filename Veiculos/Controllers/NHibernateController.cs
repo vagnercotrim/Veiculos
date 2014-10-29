@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using NHibernate.Stat;
 
 namespace Veiculos.Controllers
@@ -19,7 +15,7 @@ namespace Veiculos.Controllers
         
         public ActionResult Index()
         {
-            return View();
+            return View(_statistics);
         }
 
     }
