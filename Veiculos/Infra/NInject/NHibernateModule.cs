@@ -18,6 +18,7 @@ namespace Veiculos.Infra.NInject
             Kernel.BindFilter<TransactionFilter>(FilterScope.Action, 0).WhenActionMethodHas<TransactionAttribute>();
 
             Kernel.Bind<CriteriaPaginate>().To<CriteriaPaginate>().InRequestScope();
+            Kernel.Bind<Statistics>().To<Statistics>();
         }
     }
 }

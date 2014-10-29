@@ -192,6 +192,7 @@
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
     <Compile Include="Infra\NHibernate\SessionFactoryProvider.cs" />
+    <Compile Include="Infra\NHibernate\Statistics.cs" />
     <Compile Include="Infra\NHibernate\TransactionAttribute.cs" />
     <Compile Include="Infra\NHibernate\TransactionFilter.cs" />
     <Compile Include="Infra\NInject\DAOModule.cs" />
