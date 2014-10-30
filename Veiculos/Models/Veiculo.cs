@@ -4,7 +4,7 @@ namespace Veiculos.Models
 {
     public class Veiculo
     {
-
+        
         public virtual int Id { get; set; }
 
         public virtual int AnoModelo { get; set; }
@@ -15,7 +15,13 @@ namespace Veiculos.Models
 
         public virtual String Modelo { get; set; }
 
-        public virtual String Placa { get; set; }
+        private string _placa;
+
+        public virtual String Placa
+        {
+            get { return _placa; }
+            set { _placa = value.ToUpper(); }
+        }
 
         public virtual DateTime DataAquisicao { get; set; }
 

@@ -51,11 +51,12 @@ namespace Veiculos.Controllers
                     return RedirectToAction("Detalhar", "Veiculo", new {id = veiculo.Id});
                 }
 
+                ViewBag.Combustiveis = _combustivelDao.GetAll();
                 return View(veiculo);
-
             }
             catch (Exception)
             {
+                ViewBag.Combustiveis = _combustivelDao.GetAll();
                 return View(veiculo);
             }
         }
@@ -90,11 +91,12 @@ namespace Veiculos.Controllers
                     return RedirectToAction("Detalhar", new {id = noBanco.Id});
                 }
 
+                ViewBag.Combustiveis = _combustivelDao.GetAll();
                 return View(veiculo);
-
             }
             catch (Exception)
             {
+                ViewBag.Combustiveis = _combustivelDao.GetAll();
                 return View(veiculo);
             }
         }
