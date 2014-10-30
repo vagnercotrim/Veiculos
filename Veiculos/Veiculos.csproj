@@ -264,6 +264,7 @@
     <Content Include="Views\NHibernate\Index.cshtml" />
     <Content Include="Views\Combustivel\Index.cshtml" />
     <Content Include="Views\Combustivel\Novo.cshtml" />
+    <Content Include="Views\Combustivel\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
