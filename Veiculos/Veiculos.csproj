@@ -201,10 +201,13 @@
     <Compile Include="Infra\NInject\FluentValidationModule.cs" />
     <Compile Include="Infra\NInject\NHibernateModule.cs" />
     <Compile Include="Models\Combustivel.cs" />
+    <Compile Include="Models\Hodometro.cs" />
     <Compile Include="Models\Mapping\CombustivelMap.cs" />
+    <Compile Include="Models\Mapping\HodometroMap.cs" />
     <Compile Include="Models\Mapping\VeiculoMap.cs" />
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Validation\CombustivelValidation.cs" />
+    <Compile Include="Models\Validation\HodometroValidation.cs" />
     <Compile Include="Models\Validation\VeiculoValidation.cs" />
     <Compile Include="Models\Veiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
