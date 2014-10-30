@@ -45,7 +45,7 @@ namespace Veiculos.DAO
         public Veiculo FindByPlaca(String placa)
         {
             ICriteria criteria = _session.CreateCriteria<Veiculo>()
-                                        .Add(Restrictions.Eq("Placa", placa.ToUpper()));
+                                         .Add(Restrictions.Eq("Placa", placa == null ? "": placa.ToUpper()));
 
             return criteria.UniqueResult<Veiculo>();
         }
