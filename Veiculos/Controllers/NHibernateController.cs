@@ -6,7 +6,7 @@ namespace Veiculos.Controllers
     public class NHibernateController : Controller
     {
 
-        private IStatistics _statistics;
+        private readonly IStatistics _statistics;
 
         public NHibernateController(IStatistics statistics)
         {
