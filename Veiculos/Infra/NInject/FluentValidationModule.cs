@@ -20,6 +20,7 @@ namespace Veiculos.Infra.NInject
                                                    .To(match.ValidatorType));
 
             Kernel.Bind<VeiculoValidation>().To<VeiculoValidation>();
+            Kernel.Bind<CombustivelValidation>().To<CombustivelValidation>();
         }
     }
 }

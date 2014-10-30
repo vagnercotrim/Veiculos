@@ -180,9 +180,11 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CombustivelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NHibernateController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
+    <Compile Include="DAO\CombustivelDAO.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\VeiculoDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -233,6 +235,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\methods_pt.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
@@ -259,6 +262,8 @@
     <Content Include="Views\Veiculo\Detalhar.cshtml" />
     <Content Include="Views\Veiculo\Editar.cshtml" />
     <Content Include="Views\NHibernate\Index.cshtml" />
+    <Content Include="Views\Combustivel\Index.cshtml" />
+    <Content Include="Views\Combustivel\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

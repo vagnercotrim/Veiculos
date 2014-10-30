@@ -9,6 +9,7 @@ namespace Veiculos.Infra.NInject
         public override void Load()
         {
             Kernel.Bind<VeiculoDAO>().To<VeiculoDAO>().InRequestScope();
+            Kernel.Bind<CombustivelDAO>().To<CombustivelDAO>().InRequestScope();
         }
     }
 }
