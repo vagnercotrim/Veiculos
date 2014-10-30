@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Veiculos.Models.Hodometro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Registrar", "Novo", "Hodometro", new { id= ViewBag.Veiculo.Id }, null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quilometragem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataLeitura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRegistro)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quilometragem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLeitura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRegistro)
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>

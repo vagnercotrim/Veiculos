@@ -181,11 +181,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CombustivelController.cs" />
+    <Compile Include="Controllers\HodometroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NHibernateController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="DAO\CombustivelDAO.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
+    <Compile Include="DAO\HodometroDAO.cs" />
     <Compile Include="DAO\VeiculoDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -268,6 +270,8 @@
     <Content Include="Views\Combustivel\Index.cshtml" />
     <Content Include="Views\Combustivel\Novo.cshtml" />
     <Content Include="Views\Combustivel\Editar.cshtml" />
+    <Content Include="Views\Hodometro\Index.cshtml" />
+    <Content Include="Views\Hodometro\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
