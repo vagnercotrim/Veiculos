@@ -21,6 +21,8 @@ namespace Veiculos.Models
 
         public virtual Situacao Situacao { get; set; }
 
+        public virtual Combustivel Combustivel { get; set; }
+
         public Veiculo()
         {
             Situacao = Situacao.Emuso;
@@ -33,6 +35,7 @@ namespace Veiculos.Models
             Marca = veiculo.Marca;
             Modelo = veiculo.Marca;
             DataAquisicao = veiculo.DataAquisicao;
+            Combustivel = veiculo.Combustivel;
         }
 
     }

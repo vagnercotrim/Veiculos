@@ -12,12 +12,14 @@ namespace Veiculos.Controllers
     {
 
         private readonly VeiculoDAO _veiculoDao;
+        private readonly CombustivelDAO _combustivelDao;
         private readonly VeiculoValidation _validation;
 
-        public VeiculoController(VeiculoDAO veiculoDao, VeiculoValidation validation)
+        public VeiculoController(VeiculoDAO veiculoDao, VeiculoValidation validation, CombustivelDAO combustivelDao)
         {
             _veiculoDao = veiculoDao;
             _validation = validation;
+            _combustivelDao = combustivelDao;
         }
 
         public ActionResult Index(int pagina = 1)
@@ -29,6 +31,8 @@ namespace Veiculos.Controllers
 
         public ActionResult Novo()
         {
+            ViewBag.Combustiveis = _combustivelDao.GetAll();
+
             return View();
         }
 
@@ -58,6 +62,8 @@ namespace Veiculos.Controllers
 
         public ActionResult Editar(int id)
         {
+            ViewBag.Combustiveis = _combustivelDao.GetAll();
+
             Veiculo veiculo = _veiculoDao.Get(id);
 
             if (veiculo == null)
