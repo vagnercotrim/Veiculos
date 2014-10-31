@@ -22,6 +22,7 @@ namespace Veiculos.Controllers
             _combustivelDao = combustivelDao;
         }
 
+        [Route("veiculo")]
         public ActionResult Index(int pagina = 1)
         {
             Paging<Veiculo> veiculos = _veiculoDao.GetAll(pagina, 5);
@@ -29,6 +30,7 @@ namespace Veiculos.Controllers
             return View(veiculos);
         }
 
+        [Route("veiculo/novo")]
         public ActionResult Novo()
         {
             ViewBag.Combustiveis = _combustivelDao.GetAll();
@@ -37,6 +39,7 @@ namespace Veiculos.Controllers
         }
 
         [HttpPost]
+        [Route("veiculo/novo")]
         [Transaction]
         public ActionResult Novo(Veiculo veiculo)
         {
@@ -61,6 +64,7 @@ namespace Veiculos.Controllers
             }
         }
 
+        [Route("veiculo/{id:int}/editar")]
         public ActionResult Editar(int id)
         {
             ViewBag.Combustiveis = _combustivelDao.GetAll();
@@ -74,6 +78,7 @@ namespace Veiculos.Controllers
         }
 
         [HttpPost]
+        [Route("veiculo/{id:int}/editar")]
         [Transaction]
         public ActionResult Editar(Veiculo veiculo)
         {
@@ -101,6 +106,7 @@ namespace Veiculos.Controllers
             }
         }
         
+        [Route("veiculo/{id:int}/detalhar")]
         public ActionResult Detalhar(int id)
         {
             Veiculo veiculo = _veiculoDao.Get(id);
