@@ -6,8 +6,7 @@
 
 <h2>Novo</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Novo","Hodometro", new { id = ViewBag.Veiculo.Id}, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

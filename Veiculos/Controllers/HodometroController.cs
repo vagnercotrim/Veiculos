@@ -23,6 +23,7 @@ namespace Veiculos.Controllers
             _validation = validation;
         }
 
+        [Route("veiculo/{id}/hodometro")]
         public ActionResult Index(int id)
         {
             ViewBag.Veiculo = _veiculoDao.Get(id);
@@ -32,6 +33,8 @@ namespace Veiculos.Controllers
             return View(registros);
         }
 
+        [Route("veiculo/{id:int}/hodometro/novoregistro")]
+        [HttpGet]
         public ActionResult Novo(int id)
         {
             ViewBag.Veiculo = _veiculoDao.Get(id);
@@ -40,6 +43,7 @@ namespace Veiculos.Controllers
         }
 
         [HttpPost]
+        [Route("veiculo/{id:int}/hodometro/novoregistro")]
         [Transaction]
         public ActionResult Novo(Hodometro hodometro)
         {
