@@ -24,16 +24,25 @@ namespace Veiculos.Testes.DAO
 
         private void PopulaVeiculo(VeiculoDAO dao)
         {
-            for (int i = 2001; i < 2027; i++)
-                dao.Save(new Veiculo {AnoFabricacao = i, AnoModelo = i, Marca = "Ma", Modelo = "Mo", Placa = "DDD" + i});
+            for (int i = 2001; i <= 2027; i++)
+                dao.Save(new Veiculo {AnoFabricacao = i, AnoModelo = i, Marca = "Ma", Modelo = "Mo", Placa = "DDD-" + i});
         }
 
         [Test]
-        public void DeveRealizarUmaConsultaCom5ItensPorPaginaERetornar6Paginas()
+        public void DeveRealizarUmaConsultaCom31RegistrosERetornar6Paginas()
         {
             Paging<Veiculo> veiculos = _dao.GetAll(1, 5);
 
             Assert.AreEqual(veiculos.TotalPage, 6);
         }
+
+        [Test]
+        public void DeveRealizarUmaConsultaERetornar27Registros()
+        {
+            Paging<Veiculo> veiculos = _dao.GetAll(1, 5);
+
+            Assert.AreEqual(veiculos.TotalCount, 27);
+        }
+
     }
 }
