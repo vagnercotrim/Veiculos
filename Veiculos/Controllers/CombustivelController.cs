@@ -21,7 +21,7 @@ namespace Veiculos.Controllers
             _validation = validation;
         }
 
-
+        [Route("combustivel")]
         public ActionResult Index()
         {
             IList<Combustivel> combustiveis = _dao.GetAll();
@@ -29,13 +29,14 @@ namespace Veiculos.Controllers
             return View(combustiveis);
         }
 
-
+        [Route("combustivel/novo")]
         public ActionResult Novo()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("combustivel/novo")]
         [Transaction]
         public ActionResult Novo(Combustivel combustivel)
         {
@@ -58,6 +59,8 @@ namespace Veiculos.Controllers
                 return View(combustivel);
             }
         }
+
+        [Route("combustivel/{id:int}/editar")]
         public ActionResult Editar(int id)
         {
             Combustivel combustivel = _dao.Get(id);
@@ -69,6 +72,7 @@ namespace Veiculos.Controllers
         }
 
         [HttpPost]
+        [Route("combustivel/{id:int}/editar")]
         [Transaction]
         public ActionResult Editar(Combustivel combustivel)
         {
