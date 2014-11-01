@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Antlr.Runtime.Misc;
 using Veiculos.DAO;
 using Veiculos.Models;
 

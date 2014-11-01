@@ -31,7 +31,7 @@ namespace Veiculos.Testes.DAO
         [Test]
         public void DeveRealizarUmaConsultaCom31RegistrosERetornar6Paginas()
         {
-            Paging<Veiculo> veiculos = _dao.GetAll(1, 5);
+            Paging<Veiculo> veiculos = _dao.GetAll(null, 1, 5);
 
             Assert.AreEqual(veiculos.TotalPage, 6);
         }
@@ -39,7 +39,7 @@ namespace Veiculos.Testes.DAO
         [Test]
         public void DeveRealizarUmaConsultaERetornar27Registros()
         {
-            Paging<Veiculo> veiculos = _dao.GetAll(1, 5);
+            Paging<Veiculo> veiculos = _dao.GetAll(null, 1, 5);
 
             Assert.AreEqual(veiculos.TotalCount, 27);
         }
