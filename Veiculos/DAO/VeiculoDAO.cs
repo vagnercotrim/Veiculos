@@ -50,9 +50,14 @@ namespace Veiculos.DAO
             return criteria.UniqueResult<Veiculo>();
         }
         
-        public Paging<Veiculo> GetAll(int pagina, int registros)
+        public Paging<Veiculo> GetAll(Situacao? situacao, int pagina, int registros)
         {
-            return _paginate.GetResult<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
+            ICriteria criteria = _session.CreateCriteria<Veiculo>();
+
+            if (situacao != null)
+                criteria = criteria.Add(Restrictions.Eq("Situacao", situacao));
+
+            return _paginate.GetResult<Veiculo>(criteria, pagina, registros);
         }
 
         public int QuantidadeVeiculosEmuso()
