@@ -55,5 +55,15 @@ namespace Veiculos.DAO
             return _paginate.GetResult<Veiculo>(_session.CreateCriteria<Veiculo>(), pagina, registros);
         }
 
+        public int QuantidadeVeiculosEmuso()
+        {
+            IFutureValue<int> criteria = _session.CreateCriteria<Veiculo>()
+                                                 .Add(Restrictions.Eq("Situacao", Situacao.Emuso))
+                                                 .SetProjection(Projections.Count("Id"))
+                                                 .FutureValue<int>();
+
+            return criteria.Value;
+        }
+
     }
 }
