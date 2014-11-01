@@ -1,4 +1,5 @@
-﻿@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Veiculo>
+﻿@using Veiculos.Infra.Extensions
+@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Veiculo>
 
 @{
     ViewBag.Title = "Index";
@@ -29,6 +30,7 @@
                             <th>
                                 <span>Placa</span>
                             </th>
+                            <th>Situação</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -47,6 +49,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Placa)
+                                </td>
+                                <td>
+                                    @item.Situacao.GetEnumDescription()
                                 </td>
                                 <td>
                                     @Html.ActionLink("Hodometro", "Index", "Hodometro", new { id = item.Id }, null) |

@@ -192,6 +192,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infra\Extensions\EnumExtension.cs" />
     <Compile Include="Infra\FluentValidation\NinjectValidatorFactory.cs" />
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
