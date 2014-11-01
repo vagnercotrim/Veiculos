@@ -336,6 +336,7 @@
     <Content Include="Views\Combustivel\Editar.cshtml" />
     <Content Include="Views\Hodometro\Index.cshtml" />
     <Content Include="Views\Hodometro\Novo.cshtml" />
+    <Content Include="Views\Shared\_menulateral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
