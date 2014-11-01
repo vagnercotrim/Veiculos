@@ -209,6 +209,7 @@
     <Compile Include="Models\Mapping\HodometroMap.cs" />
     <Compile Include="Models\Mapping\VeiculoMap.cs" />
     <Compile Include="Models\Situacao.cs" />
+    <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\Validation\CombustivelValidation.cs" />
     <Compile Include="Models\Validation\HodometroValidation.cs" />
     <Compile Include="Models\Validation\VeiculoValidation.cs" />
@@ -324,7 +325,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\AngularJS.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Veiculo\Index.cshtml" />

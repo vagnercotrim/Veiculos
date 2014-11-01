@@ -28,13 +28,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in todo.items | filter:{done: false} | orderBy:'action'">
-                        <td>{{item.action}}</td>
-                        <td><input type="checkbox" ng-model="item.done" /></td>
-                        <td>{{item.done}}</td>
+                    <tr ng-repeat="item in todo.items | checkedItems:showComplete | orderBy:'action'">
+                        <td>{{item.Action}}</td>
+                        <td><input type="checkbox" ng-model="item.Done" /></td>
+                        <td>{{item.Done}}</td>
                     </tr>
                 </tbody>
             </table>
+            
+            <div class="checkbox-inline">
+                <label><input type="checkbox" ng_model="showComplete"> Show Complete</label>
+            </div>
+
         </div>
 
     </section>
@@ -46,14 +51,28 @@
 
     <script>
         var model = {
-            user: "Adam",
-            items: [{ action: "Buy Flowers", done: false },
-            { action: "Get Shoes", done: false },
-            { action: "Collect Tickets", done: true },
-            { action: "Call Joe", done: false }]
+            user: "Adam"
         };
 
         var todoApp = angular.module("todoApp", []);
+
+        todoApp.run(function ($http) {
+            $http.get("/home/todo").success(function (data) {
+                model.items = data;
+            });
+        });
+
+        todoApp.filter("checkedItems", function () {
+            return function (items, showComplete) {
+                var resultArr = [];
+                angular.forEach(items, function (item) {
+                    if (item.Done == false || showComplete == true) {
+                        resultArr.push(item);
+                    }
+                });
+                return resultArr;
+            }
+        });
 
         todoApp.controller("ToDoCtrl", function ($scope) {
             $scope.todo = model;
@@ -61,7 +80,7 @@
             $scope.incompleteCount = function () {
                 var count = 0;
                 angular.forEach($scope.todo.items, function (item) {
-                    if (!item.done) { count++ }
+                    if (!item.Done) { count++ }
                 });
                 return count;
             }
