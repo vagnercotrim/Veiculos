@@ -20,10 +20,8 @@ namespace Veiculos.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AngularJS()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
