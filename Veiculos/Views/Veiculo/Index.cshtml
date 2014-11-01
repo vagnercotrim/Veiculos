@@ -4,63 +4,86 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
 
-<p>
-    @Html.ActionLink("Novo", "Novo")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            <span>Ano do modelo / fabricação</span>
-        </th>
-        <th>
-            <span>Marca</span>
-        </th>
-        <th>
-            <span>Modelo</span>
-        </th>
-        <th>
-            <span>Placa</span>
-        </th>
-        <th></th>
-    </tr>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Veículos
+        </div>
 
-    @foreach (var item in Model.List)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnoModelo) / @Html.DisplayFor(modelItem => item.AnoFabricacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Modelo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Placa)
-            </td>
-            <td>
-                @Html.ActionLink("Hodometro", "Index", "Hodometro", new { id = item.Id }, null) |
-                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
-            </td>
-        </tr>
-    }
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>Ano do modelo / fabricação</span>
+                            </th>
+                            <th>
+                                <span>Marca</span>
+                            </th>
+                            <th>
+                                <span>Modelo</span>
+                            </th>
+                            <th>
+                                <span>Placa</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.List)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AnoModelo) / @Html.DisplayFor(modelItem => item.AnoFabricacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Marca)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Modelo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Placa)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Hodometro", "Index", "Hodometro", new { id = item.Id }, null) |
+                                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-</table>
+            <div class="text-right">
+                <ul class="pagination">
 
-<div>
-    @for (int pagina = 1; pagina <= Model.TotalPage; pagina++)
-    {
-        if (Model.PageNum == pagina)
-        {
-            <strong>@pagina</strong>
-        }
-        else
-        {
-            <strong>@Html.ActionLink(pagina.ToString(), "Index", "Veiculo", new { pagina = pagina }, null)</strong>
-        }
-    }
+                    @for (int pagina = 1; pagina <= Model.TotalPage; pagina++)
+                    {
+                        if (Model.PageNum == pagina)
+                        {
+                            <li class="pagination-sm active"><a href="#">@pagina</a></li>
+                        }
+                        else
+                        {
+                            <li class="pagination-sm">@Html.ActionLink(pagina.ToString(), "Index", "Veiculo", new { pagina = pagina }, null)</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+
+    <div class="text-left">
+        <p>
+            @Html.ActionLink("Novo", "Novo", "Veiculo", null, new { @class = "btn btn-default" })
+        </p>
+    </div>
 </div>
