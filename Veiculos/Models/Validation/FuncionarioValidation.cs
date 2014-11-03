@@ -7,6 +7,9 @@ namespace Veiculos.Models.Validation
 
         public FuncionarioValidation()
         {
+            RuleFor(f => f.Cadastro).NotEmpty();
+            RuleFor(f => f.Nome).NotEmpty();
+            RuleFor(f => f.Cargo).NotEmpty();
         }
 
     }

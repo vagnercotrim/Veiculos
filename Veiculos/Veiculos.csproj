@@ -345,6 +345,8 @@
     <Content Include="Views\Shared\_menulateral.cshtml" />
     <Content Include="Views\Shared\_menuusuario.cshtml" />
     <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Novo.cshtml" />
+    <Content Include="Views\Funcionario\Detalhar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,64 @@
+﻿@model Veiculos.Models.Funcionario
+
+@{
+    ViewBag.Title = "Detalhar";
+}
+
+<br />
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Funcionários
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cadastro)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Cadastro)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cargo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Cargo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </dt>
+
+                    <dd>
+                        <span>@( Model.Ativo ? "ativo" : "inativo" )</span>
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+
+    <div class="text-left">
+        <p>
+            @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>
