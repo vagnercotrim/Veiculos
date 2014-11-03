@@ -338,6 +338,7 @@
     <Content Include="Views\Hodometro\Index.cshtml" />
     <Content Include="Views\Hodometro\Novo.cshtml" />
     <Content Include="Views\Shared\_menulateral.cshtml" />
+    <Content Include="Views\Shared\_menuusuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
