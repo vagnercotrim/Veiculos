@@ -46,7 +46,7 @@
                                     @Html.DisplayFor(modelItem => item.Cargo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Ativo)
+                                    <span>@( item.Ativo ? "sim" : "não")</span>
                                 </td>
                                 <td>
                                     @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
