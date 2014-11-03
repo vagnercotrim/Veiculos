@@ -11,7 +11,7 @@ namespace Veiculos.Models.Mapping
 
             Map(v => v.Cadastro).Not.Nullable().Unique();
             Map(v => v.Nome).Not.Nullable();
-            Map(v => v.Cadastro).Not.Nullable();
+            Map(v => v.Cargo).Not.Nullable();
             Map(v => v.Ativo).Not.Nullable();
         }
 

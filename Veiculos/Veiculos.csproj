@@ -181,11 +181,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CombustivelController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HodometroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NHibernateController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="DAO\CombustivelDAO.cs" />
+    <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\HodometroDAO.cs" />
     <Compile Include="DAO\VeiculoDAO.cs" />
@@ -204,13 +206,16 @@
     <Compile Include="Infra\NInject\FluentValidationModule.cs" />
     <Compile Include="Infra\NInject\NHibernateModule.cs" />
     <Compile Include="Models\Combustivel.cs" />
+    <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Hodometro.cs" />
     <Compile Include="Models\Mapping\CombustivelMap.cs" />
+    <Compile Include="Models\Mapping\FuncionarioMap.cs" />
     <Compile Include="Models\Mapping\HodometroMap.cs" />
     <Compile Include="Models\Mapping\VeiculoMap.cs" />
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\Validation\CombustivelValidation.cs" />
+    <Compile Include="Models\Validation\FuncionarioValidation.cs" />
     <Compile Include="Models\Validation\HodometroValidation.cs" />
     <Compile Include="Models\Validation\VeiculoValidation.cs" />
     <Compile Include="Models\Veiculo.cs" />
@@ -339,6 +344,7 @@
     <Content Include="Views\Hodometro\Novo.cshtml" />
     <Content Include="Views\Shared\_menulateral.cshtml" />
     <Content Include="Views\Shared\_menuusuario.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

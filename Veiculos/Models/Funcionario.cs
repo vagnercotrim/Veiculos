@@ -1,22 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Veiculos.Models
 {
     public class Funcionario
     {
 
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
+        
+        private string _cadastro;
 
-        public String Cadastro { get; set; }
+        public virtual String Cadastro
+        {
+            get { return _cadastro; }
+            set { _cadastro = value.ToUpper(); }
+        }
 
-        public String Nome { get; set; }
+        public virtual String Nome { get; set; }
 
-        public String Cargo { get; set; }
+        public virtual String Cargo { get; set; }
 
-        public bool Ativo { get; set; }
+        public virtual bool Ativo { get; set; }
 
         public Funcionario()
         {
