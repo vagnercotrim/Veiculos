@@ -16,6 +16,7 @@ namespace Veiculos.Models.Mapping
             Map(v => v.Placa).Not.Nullable().Unique();
             Map(v => v.DataAquisicao).Not.Nullable();
             Map(v => v.Situacao).Not.Nullable();
+            Map(v => v.CapacidadeTanque).Not.Nullable();
 
             References(v => v.Combustivel);
         }

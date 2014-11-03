@@ -29,6 +29,8 @@ namespace Veiculos.Models
 
         public virtual Combustivel Combustivel { get; set; }
 
+        public virtual int CapacidadeTanque { get; set; }
+
         public Veiculo()
         {
             Situacao = Situacao.Emuso;

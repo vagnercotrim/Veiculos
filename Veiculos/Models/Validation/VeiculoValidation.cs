@@ -15,7 +15,8 @@ namespace Veiculos.Models.Validation
 
             RuleFor(v => v.Marca).NotEmpty();
             RuleFor(v => v.Modelo).NotEmpty();
-            
+            RuleFor(v => v.CapacidadeTanque).GreaterThan(0);
+
             RuleFor(v => v.Placa).Length(8);
             RuleFor(v => v.Placa).Matches(new Regex(@"^[a-zA-Z]{3}\-\d{4}$")).WithMessage("O número da placa é inválido.");
 
