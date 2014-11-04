@@ -11,12 +11,19 @@ namespace Veiculos.Models.Validation
         public FuncionarioValidation(FuncionarioDAO dao)
         {
             _dao = dao;
-            
+
+            Validate();
+        }
+
+        private void Validate()
+        {
             RuleFor(f => f.Cadastro).NotEmpty();
             RuleFor(f => f.Nome).NotEmpty();
             RuleFor(f => f.Cargo).NotEmpty();
 
-            RuleFor(f => f.Cadastro).Must((funcionario, cadastro) => CadastroDisponivel(funcionario)).WithMessage("Este cadastro já está em uso.");
+            RuleFor(f => f.Cadastro)
+                .Must((funcionario, cadastro) => CadastroDisponivel(funcionario))
+                .WithMessage("Este cadastro já está em uso.");
         }
 
         private bool CadastroDisponivel(Funcionario funcionario)

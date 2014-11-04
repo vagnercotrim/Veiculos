@@ -13,10 +13,16 @@ namespace Veiculos.Models.Validation
         {
             _dao = dao;
 
-            RuleFor(h => h.DataLeitura).LessThanOrEqualTo(DateTime.Now);
-            RuleFor(h => h.Quilometragem).GreaterThan((decimal) 0.0);
-            RuleFor(h => h.Quilometragem).GreaterThan(x => _dao.UltimaQuilometragemDoVeiculo(x.Veiculo)).WithMessage("A quilometragem deve ser maior que o último registro.");
+            Validate();
         }
 
+        private void Validate()
+        {
+            RuleFor(h => h.DataLeitura).LessThanOrEqualTo(DateTime.Now);
+            RuleFor(h => h.Quilometragem).GreaterThan((decimal) 0.0);
+            RuleFor(h => h.Quilometragem)
+                .GreaterThan(x => _dao.UltimaQuilometragemDoVeiculo(x.Veiculo))
+                .WithMessage("A quilometragem deve ser maior que o último registro.");
+        }
     }
 }
