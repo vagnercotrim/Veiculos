@@ -12,22 +12,27 @@ namespace Veiculos.Testes.Helper
     public class InMemoryDatabaseTest : IDisposable
     {
         private static Configuration _configuration;
-        private static ISessionFactory SessionFactory;
+        private static ISessionFactory _sessionFactory;
         protected ISession Session { get; set; }
         
         [SetUp]
         public void Initialize()
         {
-            SessionFactory = Fluently.Configure()
-            .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
-            .Mappings(m => m.FluentMappings.AddFromAssemblyOf<VeiculoMap>())
-            .ExposeConfiguration(cfg => _configuration = cfg)
-            .BuildSessionFactory();
+            _sessionFactory = CreateSessionFactory();
 
-            Session = SessionFactory.OpenSession();
+            Session = _sessionFactory.OpenSession();
 
             SchemaExport export = new SchemaExport(_configuration);
             export.Execute(true, true, false, Session.Connection, null);
+        }
+
+        private static ISessionFactory CreateSessionFactory()
+        {
+            return Fluently.Configure()
+                           .Database(SQLiteConfiguration.Standard.InMemory().ShowSql())
+                           .Mappings(m => m.FluentMappings.AddFromAssemblyOf<VeiculoMap>())
+                           .ExposeConfiguration(cfg => _configuration = cfg)
+                           .BuildSessionFactory();
         }
 
         [TearDown]
