@@ -46,9 +46,11 @@ namespace Veiculos.DAO
 
         public Funcionario FindByCadastro(String cadastro)
         {
+            cadastro = cadastro == null ? "" : cadastro.ToUpper();
+
             ICriteria criteria = _session.CreateCriteria<Funcionario>()
-                                         .Add(Restrictions.Eq("Cadastro", cadastro == null ? "" : cadastro.ToUpper()));
-            
+                                         .Add(Restrictions.Eq("Cadastro", cadastro));
+
             return criteria.UniqueResult<Funcionario>();
         }
 
