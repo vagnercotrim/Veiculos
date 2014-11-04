@@ -44,6 +44,8 @@ namespace Veiculos.Models
             Modelo = veiculo.Marca;
             DataAquisicao = veiculo.DataAquisicao;
             Combustivel = veiculo.Combustivel;
+            CapacidadeTanque = veiculo.CapacidadeTanque;
+            Placa = veiculo.Placa;
         }
 
     }
