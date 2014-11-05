@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using FluentValidation.Results;
 using Veiculos.DAO;
@@ -39,7 +36,10 @@ namespace Veiculos.Controllers
             Motorista motorista = _motoristaDao.FindByFuncionario(id);
 
             if (motorista != null)
-                return RedirectToAction("Index", "Funcionario");
+            {
+                this.Warning("Já existe um cadastro de motorista para o funcionário.");
+                return RedirectToAction("Detalhar", "Funcionario", new {id = motorista.Id});
+            }
 
             Funcionario funcionario = _funcionarioDao.Get(id);
 

@@ -220,6 +220,8 @@
     <Compile Include="Infra\NInject\DAOModule.cs" />
     <Compile Include="Infra\NInject\FluentValidationModule.cs" />
     <Compile Include="Infra\NInject\NHibernateModule.cs" />
+    <Compile Include="Infra\Notice\NoticeHelper.cs" />
+    <Compile Include="Infra\Notice\NoticeType.cs" />
     <Compile Include="Models\Combustivel.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Hodometro.cs" />
