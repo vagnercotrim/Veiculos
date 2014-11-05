@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using FluentNHibernate.Conventions;
-using FluentNHibernate.Utils;
 using Veiculos.Infra.Notice;
 
 namespace System.Web.Mvc
@@ -28,36 +26,55 @@ namespace System.Web.Mvc
             controller.TempData["notices"] = erros;
         }
 
-        public static void AddNotice(this ControllerBase controller, string mensagem, NoticeType classe)
+        public static void AddNotice(this ControllerBase controller, String title, String mensagem, NoticeType classe)
         {
             try
             {
                 IList<Notice> notices = GetNoticesFromTempData(controller);
-                notices.Add(new Notice(mensagem, classe));
+                notices.Add(new Notice(title, mensagem, classe));
                 AddNotice(controller, notices);
             }
             catch { }
         }
 
-        public static void Success(this ControllerBase controller, string mensagem)
+        public static void Success(this ControllerBase controller, String title, String mensagem)
         {
-            AddNotice(controller, mensagem, NoticeType.Success);
+            AddNotice(controller, title, mensagem, NoticeType.Success);
         }
 
-        public static void Info(this ControllerBase controller, string mensagem)
+        public static void Success(this ControllerBase controller, String mensagem)
         {
-            AddNotice(controller, mensagem, NoticeType.Info);
+            AddNotice(controller, null, mensagem, NoticeType.Success);
         }
 
-        public static void Warning(this ControllerBase controller, string mensagem)
+        public static void Info(this ControllerBase controller, String title, String mensagem)
         {
-            AddNotice(controller, mensagem, NoticeType.Warning);
+            AddNotice(controller, title, mensagem, NoticeType.Info);
         }
 
-        public static void Error(this ControllerBase controller, string mensagem)
+        public static void Info(this ControllerBase controller, String mensagem)
         {
-            AddNotice(controller, mensagem, NoticeType.Error);
+            AddNotice(controller, null, mensagem, NoticeType.Info);
         }
 
+        public static void Warning(this ControllerBase controller, String title, String mensagem)
+        {
+            AddNotice(controller, title, mensagem, NoticeType.Warning);
+        }
+        public static void Warning(this ControllerBase controller, String mensagem)
+        {
+            AddNotice(controller, null, mensagem, NoticeType.Warning);
+        }
+
+        public static void Error(this ControllerBase controller, String title, String mensagem)
+        {
+            AddNotice(controller, title, mensagem, NoticeType.Error);
+        }
+
+        public static void Error(this ControllerBase controller, String mensagem)
+        {
+            AddNotice(controller, null, mensagem, NoticeType.Error);
+        }
+        
     }
 }
