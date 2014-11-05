@@ -30,24 +30,19 @@ namespace System.Web.Mvc
             if (erros.IsNullOrEmpty())
                 return MvcHtmlString.Empty;
 
-            var html = BuildScript(erros, closeButton, positionClass);
-
-            return MvcHtmlString.Create(html);
+            return MvcHtmlString.Create(BuildScript(erros, closeButton, positionClass));
         }
 
         private static string BuildScript(IEnumerable<Notice> erros, bool closeButton, String positionClass)
         {
             String toastrOptions = String.Format(@"""closeButton"": ""{0}"",""positionClass"": ""{1}"",""newestOnTop"": ""false"",""onclick"": null,""showDuration"": ""0"",""hideDuration"": ""0"",""timeOut"": ""0"",""showMethod"": ""fadeIn""",
                                                   closeButton.ToString().ToLower(), positionClass);
-
-            String html = @"<script type=""text/javascript"">$(function () {toastr.options = {" + toastrOptions + "};#notices#});</script>";
-
             String notices = "";
 
             foreach (Notice par in erros)
                 notices += ToScript(par);
 
-            return html.Replace("#notices#", notices);
+            return @"<script type=""text/javascript"">$(function () {toastr.options = {" + toastrOptions + "};" + notices + "});</script>";
         }
 
         private static string ToScript(Notice notice)
