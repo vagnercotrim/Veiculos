@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using FluentNHibernate.Conventions;
-using FluentNHibernate.Utils;
+using Veiculos.Infra.Extensions;
 using Veiculos.Infra.Notice;
 
 namespace System.Web.Mvc
@@ -28,34 +27,32 @@ namespace System.Web.Mvc
 
         private static MvcHtmlString Toastr(this HtmlHelper htmlHelper, IList<Notice> erros, bool closeButton, String positionClass)
         {
-            if (erros.IsNotEmpty())
-            {
-                var html = BuildScript(erros, closeButton, positionClass);
+            if (erros.IsNullOrEmpty())
+                return MvcHtmlString.Empty;
 
-                return MvcHtmlString.Create(html);
-            }
+            var html = BuildScript(erros, closeButton, positionClass);
 
-            return MvcHtmlString.Empty;
+            return MvcHtmlString.Create(html);
         }
 
         private static string BuildScript(IEnumerable<Notice> erros, bool closeButton, String positionClass)
         {
             String toastrOptions = String.Format(@"""closeButton"": ""{0}"",""positionClass"": ""{1}"",""newestOnTop"": ""false"",""onclick"": null,""showDuration"": ""0"",""hideDuration"": ""0"",""timeOut"": ""0"",""showMethod"": ""fadeIn""",
-                                                  closeButton.ToLowerInvariantString(), positionClass);
-            
+                                                  closeButton.ToString().ToLower(), positionClass);
+
             String html = @"<script type=""text/javascript"">$(function () {toastr.options = {" + toastrOptions + "};#notices#});</script>";
 
             String notices = "";
 
             foreach (Notice par in erros)
                 notices += ToScript(par);
-            
+
             return html.Replace("#notices#", notices);
         }
 
         private static string ToScript(Notice notice)
         {
-            if(notice.Title != null)
+            if (notice.Title != null)
                 return String.Format("toastr.{0}('{1}','{2}');", notice.Type.ToString().ToLower(), notice.Message, notice.Title);
 
             return String.Format("toastr.{0}('{1}');", notice.Type.ToString().ToLower(), notice.Message);
