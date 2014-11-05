@@ -371,6 +371,7 @@
     <Content Include="Views\Funcionario\Detalhar.cshtml" />
     <Content Include="Views\Motorista\Index.cshtml" />
     <Content Include="Views\Motorista\Novo.cshtml" />
+    <Content Include="Views\Motorista\Detalhar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -56,6 +56,13 @@ namespace Veiculos.DAO
 
             return _paginate.GetResult<Motorista>(criteria, pagina, registros);
         }
+        
+        public Motorista FindByFuncionario(int id)
+        {
+            ICriteria criteria = _session.CreateCriteria<Motorista>()
+                                         .Add(Restrictions.Eq("Funcionario.Id", id));
 
+            return criteria.UniqueResult<Motorista>();
+        }
     }
 }

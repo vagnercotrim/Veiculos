@@ -36,6 +36,11 @@ namespace Veiculos.Controllers
         [Route("motorista/novo")]
         public ActionResult Novo(int id)
         {
+            Motorista motorista = _motoristaDao.FindByFuncionario(id);
+
+            if (motorista != null)
+                return RedirectToAction("Index", "Funcionario");
+
             Funcionario funcionario = _funcionarioDao.Get(id);
 
             if (funcionario == null)
@@ -69,6 +74,17 @@ namespace Veiculos.Controllers
                 return View(motorista);
             }
         }
-        
+
+        [Route("motorista/{id:int}/detalhar")]
+        public ActionResult Detalhar(int id)
+        {
+            Motorista motorista = _motoristaDao.Get(id);
+
+            if (motorista == null)
+                return RedirectToAction("Index", "Motorista");
+
+            return View(motorista);
+        }
+       
     }
 }
