@@ -9,12 +9,12 @@ namespace System.Web.Mvc
 
         public static IList<Notice> GetNoticesFromTempData(this HtmlHelper htmlHelper)
         {
-            var notices = htmlHelper.ViewContext.Controller.TempData["notices"];
+            var notices = htmlHelper.ViewContext.Controller.TempData["notices"] as IList<Notice>;
 
             if (notices == null)
                 return new List<Notice>();
 
-            return (IList<Notice>)notices;
+            return notices;
         }
 
         private static MvcHtmlString Toastr(this HtmlHelper htmlHelper, Notice erro, bool closeButton, String positionClass)
