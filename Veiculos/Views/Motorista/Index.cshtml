@@ -1,4 +1,4 @@
-﻿@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Funcionario>
+﻿@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Motorista>
 
 @{
     ViewBag.Title = "Index";
@@ -18,16 +18,22 @@
                     <thead>
                         <tr>
                             <th>
-                                <span>Cadastro</span>
-                            </th>
-                            <th>
                                 <span>Nome</span>
                             </th>
                             <th>
-                                <span>Cargo</span>
+                                <span>Número</span>
                             </th>
                             <th>
-                                <span>Ativo</span>
+                                <span>Registro</span>
+                            </th>
+                            <th>
+                                <span>Categoria</span>
+                            </th>
+                            <th>
+                                <span>Validade CNH</span>
+                            </th>
+                            <th>
+                                <span>Observação</span>
                             </th>
                             <th></th>
                         </tr>
@@ -37,21 +43,26 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Cadastro)
+                                    @Html.DisplayFor(modelItem => item.Funcionario.Nome)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Nome)
+                                    @Html.DisplayFor(modelItem => item.Numero)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Cargo)
+                                    @Html.DisplayFor(modelItem => item.Registro)
                                 </td>
                                 <td>
-                                    <span>@( item.Ativo ? "sim" : "não")</span>
+                                    @Html.DisplayFor(modelItem => item.Categoria)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Validade)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observacao)
                                 </td>
                                 <td>
                                     @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id }) |
-                                    @Html.ActionLink("Novo", "Novo", "Motorista", new { id = item.Id }, null) 
+                                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
                                 </td>
                             </tr>
                         }
@@ -70,7 +81,7 @@
                         }
                         else
                         {
-                            <li class="pagination-sm">@Html.ActionLink(pagina.ToString(), "Index", "Funcionario", new { pagina = pagina }, null)</li>
+                            <li class="pagination-sm">@Html.ActionLink(pagina.ToString(), "Index", "Veiculo", new { pagina = pagina }, null)</li>
                         }
                     }
                 </ul>
@@ -83,7 +94,7 @@
 
     <div class="text-left">
         <p>
-            @Html.ActionLink("Novo", "Novo", "Funcionario", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Novo", "Novo", "Motorista", null, new { @class = "btn btn-default" })
         </p>
     </div>
 </div>

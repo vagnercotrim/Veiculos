@@ -196,12 +196,14 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HodometroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MotoristaController.cs" />
     <Compile Include="Controllers\NHibernateController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="DAO\CombustivelDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\HodometroDAO.cs" />
+    <Compile Include="DAO\MotoristaDAO.cs" />
     <Compile Include="DAO\VeiculoDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,12 +226,15 @@
     <Compile Include="Models\Mapping\CombustivelMap.cs" />
     <Compile Include="Models\Mapping\FuncionarioMap.cs" />
     <Compile Include="Models\Mapping\HodometroMap.cs" />
+    <Compile Include="Models\Mapping\MotoristaMap.cs" />
     <Compile Include="Models\Mapping\VeiculoMap.cs" />
+    <Compile Include="Models\Motorista.cs" />
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\Validation\CombustivelValidation.cs" />
     <Compile Include="Models\Validation\FuncionarioValidation.cs" />
     <Compile Include="Models\Validation\HodometroValidation.cs" />
+    <Compile Include="Models\Validation\MotoristaValidation.cs" />
     <Compile Include="Models\Validation\VeiculoValidation.cs" />
     <Compile Include="Models\Veiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -364,6 +369,8 @@
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Funcionario\Novo.cshtml" />
     <Content Include="Views\Funcionario\Detalhar.cshtml" />
+    <Content Include="Views\Motorista\Index.cshtml" />
+    <Content Include="Views\Motorista\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
