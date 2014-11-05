@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using Veiculos.Infra.Extensions;
 using Veiculos.Infra.Notice;
 
@@ -35,14 +36,25 @@ namespace System.Web.Mvc
 
         private static string BuildScript(IEnumerable<Notice> erros, bool closeButton, String positionClass)
         {
-            String toastrOptions = String.Format(@"""closeButton"": ""{0}"",""positionClass"": ""{1}"",""newestOnTop"": ""false"",""onclick"": null,""showDuration"": ""0"",""hideDuration"": ""0"",""timeOut"": ""0"",""showMethod"": ""fadeIn""",
-                                                  closeButton.ToString().ToLower(), positionClass);
-            String notices = "";
+            StringBuilder builder = new StringBuilder();
+
+            builder.Append(@"<script type=""text/javascript"">$(function () {toastr.options = {");
+            builder.Append(String.Format(@"""closeButton"": ""{0}"", ", closeButton.ToString().ToLower()));
+            builder.Append(String.Format(@" ""positionClass"": ""{0}"", ", positionClass));
+            builder.Append(@" ""newestOnTop"": ""false"", ");
+            builder.Append(@" ""onclick"": null, ");
+            builder.Append(@" ""showDuration"": ""0"", ");
+            builder.Append(@" ""hideDuration"": ""0"", ");
+            builder.Append(@" ""timeOut"": ""0"", ");
+            builder.Append(@" ""showMethod"": ""fadeIn"" ");
+            builder.Append("};");
 
             foreach (Notice par in erros)
-                notices += ToScript(par);
+                builder.Append(ToScript(par));
 
-            return @"<script type=""text/javascript"">$(function () {toastr.options = {" + toastrOptions + "};" + notices + "});</script>";
+            builder.Append("});</script>");
+
+            return builder.ToString();
         }
 
         private static string ToScript(Notice notice)

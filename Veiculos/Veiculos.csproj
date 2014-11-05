@@ -210,6 +210,7 @@
     </Compile>
     <Compile Include="Hubs\MyHub.cs" />
     <Compile Include="Infra\Extensions\EnumExtension.cs" />
+    <Compile Include="Infra\Extensions\ListExtensions.cs" />
     <Compile Include="Infra\FluentValidation\NinjectValidatorFactory.cs" />
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
