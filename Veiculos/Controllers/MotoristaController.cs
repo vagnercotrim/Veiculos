@@ -38,7 +38,7 @@ namespace Veiculos.Controllers
             if (motorista != null)
             {
                 this.Warning("Já existe um cadastro de motorista para o funcionário.");
-                return RedirectToAction("Detalhar", "Funcionario", new {id = motorista.Id});
+                return RedirectToAction("Detalhar", "Motorista", new {id = motorista.Id});
             }
 
             Funcionario funcionario = _funcionarioDao.Get(id);

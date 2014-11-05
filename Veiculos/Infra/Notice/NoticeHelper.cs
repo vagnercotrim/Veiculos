@@ -8,12 +8,12 @@ namespace System.Web.Mvc
 
         public static IList<Notice> GetNoticesFromTempData(this ControllerBase controller)
         {
-            var notices = controller.TempData["notices"];
+            var notices = controller.TempData["notices"] as IList<Notice>;
 
             if (notices == null)
                 return new List<Notice>();
 
-            return (List<Notice>)notices;
+            return notices;
         }
 
         public static void ClearNotices(this ControllerBase controller)
