@@ -8,17 +8,17 @@ namespace System.Web.Mvc
     public static class ToastrHelper
     {
 
-        public static IDictionary<String, NoticeType> GetNoticesFromTempData(this HtmlHelper htmlHelper)
+        public static IList<Notice> GetNoticesFromTempData(this HtmlHelper htmlHelper)
         {
             var notices = htmlHelper.ViewContext.Controller.TempData["notices"];
 
             if (notices == null)
-                return new Dictionary<String, NoticeType>();
+                return new List<Notice>();
 
-            return (Dictionary<String, NoticeType>)notices;
+            return (IList<Notice>)notices;
         }
 
-        private static MvcHtmlString Toastr(this HtmlHelper htmlHelper, IDictionary<String, NoticeType> erros)
+        private static MvcHtmlString Toastr(this HtmlHelper htmlHelper, IList<Notice> erros)
         {
             if (erros.IsNotEmpty())
             {
@@ -29,18 +29,26 @@ namespace System.Web.Mvc
 
             return MvcHtmlString.Empty;
         }
-
-        private static string BuildScript(IDictionary<string, NoticeType> erros)
+        
+        private static string BuildScript(IList<Notice> erros)
         {
             String toastrOptions = @"toastr.options = {""closeButton"": true,""positionClass"": ""toast-bottom-right"",""onclick"": null,""showDuration"": ""0"",""hideDuration"": ""0"",""timeOut"": ""0"",""showMethod"": ""fadeIn""}";
             String html = @"<script type=""text/javascript"">$(function () {" + toastrOptions + ";#notices#});</script>";
-            
+
             String notices = "";
 
-            foreach (KeyValuePair<string, NoticeType> par in erros)
-                notices += String.Format("toastr.{0}('{1}');", par.Value.ToLowerInvariantString(), par.Key);
+            foreach (Notice par in erros)
+                notices += ToScript(par);
             
             return html.Replace("#notices#", notices);
+        }
+
+        private static string ToScript(Notice notice)
+        {
+            if(notice.Title != null)
+                return String.Format("toastr.{0}('{1}','{2}');", notice.Type.ToString().ToLower(), notice.Message, notice.Title);
+
+            return String.Format("toastr.{0}('{1}');", notice.Type.ToString().ToLower(), notice.Message);
         }
 
         public static MvcHtmlString Toastr(this HtmlHelper htmlHelper)

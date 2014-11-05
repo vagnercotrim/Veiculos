@@ -8,22 +8,22 @@ namespace System.Web.Mvc
     public static class NoticeHelper
     {
 
-        public static IDictionary<String, NoticeType> GetNoticesFromTempData(this ControllerBase controller)
+        public static IList<Notice> GetNoticesFromTempData(this ControllerBase controller)
         {
             var notices = controller.TempData["notices"];
 
             if (notices == null)
-                return new Dictionary<String, NoticeType>();
+                return new List<Notice>();
 
-            return (Dictionary<String, NoticeType>)notices;
+            return (List<Notice>)notices;
         }
 
         public static void ClearNotices(this ControllerBase controller)
         {
-            controller.TempData["notices"] = new Dictionary<String, NoticeType>();
+            controller.TempData["notices"] = new List<Notice>();
         }
-
-        public static void AddNotice(this ControllerBase controller, IDictionary<String, NoticeType> erros)
+        
+        public static void AddNotice(this ControllerBase controller, IList<Notice> erros)
         {
             controller.TempData["notices"] = erros;
         }
@@ -32,8 +32,8 @@ namespace System.Web.Mvc
         {
             try
             {
-                IDictionary<String, NoticeType> notices = GetNoticesFromTempData(controller);
-                notices.Add(mensagem, classe);
+                IList<Notice> notices = GetNoticesFromTempData(controller);
+                notices.Add(new Notice(mensagem, classe));
                 AddNotice(controller, notices);
             }
             catch { }

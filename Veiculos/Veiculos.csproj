@@ -220,6 +220,7 @@
     <Compile Include="Infra\NInject\DAOModule.cs" />
     <Compile Include="Infra\NInject\FluentValidationModule.cs" />
     <Compile Include="Infra\NInject\NHibernateModule.cs" />
+    <Compile Include="Infra\Notice\Notice.cs" />
     <Compile Include="Infra\Notice\NoticeHelper.cs" />
     <Compile Include="Infra\Notice\NoticeType.cs" />
     <Compile Include="Infra\Notice\ToastrHelper.cs" />
