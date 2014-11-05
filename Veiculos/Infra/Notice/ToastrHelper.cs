@@ -39,11 +39,12 @@ namespace System.Web.Mvc
             StringBuilder builder = new StringBuilder();
 
             builder.Append(@"<script type=""text/javascript"">$(function () {toastr.options = {");
-            builder.Append(String.Format(@"""closeButton"": ""{0}"", ", closeButton.ToString().ToLower()));
-            builder.Append(String.Format(@" ""positionClass"": ""{0}"", ", positionClass));
-            builder.Append(@" ""newestOnTop"": ""false"", ");
+
+            builder.Append(BuildOptions("closeButton", closeButton));
+            builder.Append(BuildOptions("positionClass", positionClass));
+            builder.Append(BuildOptions("newestOnTop", false));
             builder.Append(@" ""onclick"": null, ");
-            builder.Append(@" ""showDuration"": ""0"", ");
+            builder.Append(@" """": ""0"", ");
             builder.Append(@" ""hideDuration"": ""0"", ");
             builder.Append(@" ""timeOut"": ""0"", ");
             builder.Append(@" ""showMethod"": ""fadeIn"" ");
@@ -55,6 +56,11 @@ namespace System.Web.Mvc
             builder.Append("});</script>");
 
             return builder.ToString();
+        }
+
+        private static string BuildOptions(String option, object closeButton)
+        {
+            return String.Format(@" ""{0}"": ""{1}"", ", option, closeButton.ToString().ToLower());
         }
 
         private static string ToScript(Notice notice)
