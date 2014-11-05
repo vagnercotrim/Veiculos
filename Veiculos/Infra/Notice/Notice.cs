@@ -11,22 +11,15 @@ namespace Veiculos.Infra.Notice
 
         public NoticeType Type { get; private set; }
 
-        public bool IsSticky { get; private set; }
-
-        public Notice(String title, String message, NoticeType type, bool isSticky)
+        public Notice(String title, String message, NoticeType type)
         {
-            IsSticky = isSticky;
-            Type = type;
-            Message = message;
             Title = title;
+            Message = message;
+            Type = type;
         }
 
-        public Notice(String title, String message, NoticeType type) : this(title, message, type, false)
-        {
-
-        }
-
-        public Notice(String message, NoticeType type) : this(null, message, type, false)
+        public Notice(String message, NoticeType type)
+            : this(null, message, type)
         {
 
         }

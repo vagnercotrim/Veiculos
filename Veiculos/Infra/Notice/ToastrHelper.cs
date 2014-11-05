@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Veiculos.Infra.Extensions;
 using Veiculos.Infra.Notice;
 
 namespace System.Web.Mvc
@@ -38,8 +37,8 @@ namespace System.Web.Mvc
         {
             StringBuilder builder = new StringBuilder();
 
-            builder.Append(@"<script type=""text/javascript"">$(function () {toastr.options = {");
-
+            builder.Append(@"<script type=""text/javascript"">");
+            builder.Append("$(function () {toastr.options = {");
             builder.Append(BuildOptions("closeButton", closeButton));
             builder.Append(BuildOptions("positionClass", positionClass));
             builder.Append(BuildOptions("newestOnTop", false));

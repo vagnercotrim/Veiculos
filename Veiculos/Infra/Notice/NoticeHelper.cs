@@ -26,7 +26,7 @@ namespace System.Web.Mvc
             controller.TempData["notices"] = erros;
         }
 
-        public static void AddNotice(this ControllerBase controller, String title, String mensagem, NoticeType classe)
+        private static void AddNotice(this ControllerBase controller, String title, String mensagem, NoticeType classe)
         {
             try
             {

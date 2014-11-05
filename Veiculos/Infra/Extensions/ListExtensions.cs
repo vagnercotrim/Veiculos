@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
-namespace Veiculos.Infra.Extensions
+namespace System.Collections.Generic
 {
     public static class ListExtensions
     {
