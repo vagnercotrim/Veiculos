@@ -112,7 +112,10 @@ namespace Veiculos.Controllers
             Veiculo veiculo = _veiculoDao.Get(id);
 
             if (veiculo == null)
+            {
+                this.Warning("Veículo não encontrado.");
                 return RedirectToAction("Index", "Veiculo");
+            }
 
             return View(veiculo);
         }
