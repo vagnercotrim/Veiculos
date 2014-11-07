@@ -85,13 +85,13 @@ namespace Veiculos.Controllers
             try
             {
                 Veiculo noBanco = _veiculoDao.Get(veiculo.Id);
-                noBanco.Atualiza(veiculo);
+                veiculo.Situacao = noBanco.Situacao;
 
-                ValidationResult result = _validation.Validate(noBanco);
+                ValidationResult result = _validation.Validate(veiculo);
 
                 if (result.IsValid)
                 {
-                    _veiculoDao.Update(noBanco);
+                    _veiculoDao.Update(veiculo);
 
                     return RedirectToAction("Detalhar", new {id = noBanco.Id});
                 }

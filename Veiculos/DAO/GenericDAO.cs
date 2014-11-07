@@ -31,7 +31,7 @@ namespace Veiculos.DAO
 
         public void Update(T t)
         {
-            _session.Update(t);
+            _session.Merge(t);
         }
 
         public void Delete(T t)

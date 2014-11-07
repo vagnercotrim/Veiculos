@@ -36,17 +36,5 @@ namespace Veiculos.Models
             Situacao = Situacao.Emuso;
         }
 
-        public virtual void Atualiza(Veiculo veiculo)
-        {
-            AnoModelo = veiculo.AnoModelo;
-            AnoFabricacao = veiculo.AnoFabricacao;
-            Fabricante = veiculo.Fabricante;
-            Modelo = veiculo.Modelo;
-            DataAquisicao = veiculo.DataAquisicao;
-            Combustivel = veiculo.Combustivel;
-            CapacidadeTanque = veiculo.CapacidadeTanque;
-            Placa = veiculo.Placa;
-        }
-
     }
 }
