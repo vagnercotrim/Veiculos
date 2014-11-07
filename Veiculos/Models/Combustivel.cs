@@ -11,10 +11,5 @@ namespace Veiculos.Models
 
         public virtual decimal Preco { get; set; }
 
-        public virtual void Atualiza(Combustivel combustivel)
-        {
-            Descricao = combustivel.Descricao;
-            Preco = combustivel.Preco;
-        }
     }
 }

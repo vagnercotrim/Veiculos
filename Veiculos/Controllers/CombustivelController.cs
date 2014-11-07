@@ -78,14 +78,11 @@ namespace Veiculos.Controllers
         {
             try
             {
-                Combustivel noBanco = _dao.Get(combustivel.Id);
-                noBanco.Atualiza(combustivel);
-
-                ValidationResult result = _validation.Validate(noBanco);
+                ValidationResult result = _validation.Validate(combustivel);
 
                 if (result.IsValid)
                 {
-                    _dao.Update(noBanco);
+                    _dao.Update(combustivel);
 
                     return RedirectToAction("Index", "Combustivel");
                 }
