@@ -11,7 +11,7 @@ namespace Veiculos.Models
 
         public virtual int AnoFabricacao { get; set; }
 
-        public virtual String Marca { get; set; }
+        public virtual String Fabricante { get; set; }
 
         public virtual String Modelo { get; set; }
 
@@ -40,8 +40,8 @@ namespace Veiculos.Models
         {
             AnoModelo = veiculo.AnoModelo;
             AnoFabricacao = veiculo.AnoFabricacao;
-            Marca = veiculo.Marca;
-            Modelo = veiculo.Marca;
+            Fabricante = veiculo.Fabricante;
+            Modelo = veiculo.Modelo;
             DataAquisicao = veiculo.DataAquisicao;
             Combustivel = veiculo.Combustivel;
             CapacidadeTanque = veiculo.CapacidadeTanque;

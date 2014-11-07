@@ -25,7 +25,7 @@ namespace Veiculos.Testes.DAO
         private void PopulaVeiculo(VeiculoDAO dao)
         {
             for (int i = 2001; i <= 2027; i++)
-                dao.Save(new Veiculo {AnoFabricacao = i, AnoModelo = i, Marca = "Ma", Modelo = "Mo", Placa = "DDD-" + i});
+                dao.Save(new Veiculo {AnoFabricacao = i, AnoModelo = i, Fabricante = "Fa", Modelo = "Mo", Placa = "DDD-" + i});
         }
 
         [Test]

@@ -18,7 +18,7 @@ namespace Veiculos.Models.Validation
 
         private void Validate()
         {
-            RuleFor(v => v.Marca).NotEmpty();
+            RuleFor(v => v.Fabricante).NotEmpty();
             RuleFor(v => v.Modelo).NotEmpty();
             RuleFor(v => v.CapacidadeTanque).GreaterThan(0);
 
