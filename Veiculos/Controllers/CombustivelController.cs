@@ -48,6 +48,7 @@ namespace Veiculos.Controllers
                 {
                     _dao.Save(combustivel);
 
+                    this.Success("Combustível cadastrado com sucesso.");
                     return RedirectToAction("Index", "Combustivel");
                 }
 
@@ -84,6 +85,7 @@ namespace Veiculos.Controllers
                 {
                     _dao.Update(combustivel);
 
+                    this.Success("Combustível editado com sucesso.");
                     return RedirectToAction("Index", "Combustivel");
                 }
 
