@@ -67,6 +67,8 @@ namespace Veiculos.Controllers
                     return RedirectToAction("Detalhar", "Motorista", new { id = motorista.Id });
                 }
 
+                ViewBag.Funcionario = _funcionarioDao.Get(motorista.Funcionario.Id);
+                
                 return View(motorista);
             }
             catch (Exception)
