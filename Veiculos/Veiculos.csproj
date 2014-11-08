@@ -240,6 +240,7 @@
     <Compile Include="Models\Motorista.cs" />
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Todo.cs" />
+    <Compile Include="Models\Validation\AutorizacaoCirculacaoValidation.cs" />
     <Compile Include="Models\Validation\CombustivelValidation.cs" />
     <Compile Include="Models\Validation\FuncionarioValidation.cs" />
     <Compile Include="Models\Validation\HodometroValidation.cs" />
@@ -382,6 +383,7 @@
     <Content Include="Views\Motorista\Novo.cshtml" />
     <Content Include="Views\Motorista\Detalhar.cshtml" />
     <Content Include="Views\Autorizacao\Index.cshtml" />
+    <Content Include="Views\Autorizacao\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
