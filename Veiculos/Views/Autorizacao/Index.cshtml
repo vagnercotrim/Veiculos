@@ -1,5 +1,4 @@
-﻿@using Veiculos.Infra.Extensions
-@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.AutorizacaoCirculacao>
+﻿@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.AutorizacaoCirculacao>
 
 @{
     ViewBag.Title = "Index";
@@ -55,10 +54,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Termino)
                                 </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
-                                </td>
+                                <td></td>
                             </tr>
                         }
                     </tbody>
@@ -85,11 +81,11 @@
     </div>
 </div>
 
-<div class="col-lg-12">
 
+<div class="col-lg-12">
     <div class="text-left">
         <p>
-            <span> ads asd asd</span>
+            @Html.ActionLink("Novo", "NovoSemId", "Autorizacao", null, new { @class = "btn btn-default" })
         </p>
     </div>
 </div>

@@ -36,13 +36,29 @@ namespace Veiculos.Controllers
             return View(veiculos);
         }
 
-        [Route("autorizacao/novo")]
+        [Route("autorizacao/nova")]
+        public ActionResult NovoSemId()
+        {
+            this.Info("Selecione um veículo e clique em autorização para continuar.");
+            return RedirectToAction("Index", "Veiculo", new { situacao = "Emuso" } );
+        }
+
+        [Route("veiculo/{id:int}/autorizacao/nova")]
         public ActionResult Novo(int id)
         {
             Veiculo veiculo = _veiculoDao.Get(id);
 
             if (veiculo == null)
+            {
+                this.Info("Veículo não encontrado.");
                 return RedirectToAction("Index");
+            }
+
+            if (veiculo.Situacao != Situacao.Emuso)
+            {
+                this.Info("O veículo selecionado não e está mais disponível.");
+                return RedirectToAction("Index");
+            }
 
             ViewBag.Veiculo = veiculo;
 
@@ -53,7 +69,7 @@ namespace Veiculos.Controllers
         }
         
         [HttpPost]
-        [Route("autorizacao/novo")]
+        [Route("veiculo/{id:int}/autorizacao/nova")]
         [Transaction]
         public ActionResult Novo(AutorizacaoCirculacao autorizacao)
         {

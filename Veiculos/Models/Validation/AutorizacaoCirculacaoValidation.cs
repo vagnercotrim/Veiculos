@@ -17,6 +17,7 @@ namespace Veiculos.Models.Validation
 
             RuleFor(a => a.Inicio).LessThanOrEqualTo(a => a.Termino);
             RuleFor(a => a.Finalidade).NotEmpty();
+            RuleFor(a => a.Observacao).NotEmpty();
             RuleFor(a => a.QuemAutorizou).NotNull();
         }
 
