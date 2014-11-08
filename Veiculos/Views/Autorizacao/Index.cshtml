@@ -1,0 +1,95 @@
+﻿@using Veiculos.Infra.Extensions
+@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.AutorizacaoCirculacao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Veículos
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>Número / Ano</span>
+                            </th>
+                            <th>
+                                <span>Data</span>
+                            </th>
+                            <th>
+                                <span>Veiculo</span>
+                            </th>
+                            <th>
+                                <span>Inicio</span>
+                            </th>
+                            <th>
+                                <span>Termino</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.List)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Numero) / @Html.DisplayFor(modelItem => item.Ano)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Data)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Inicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Termino)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-right">
+                <ul class="pagination">
+
+                    @for (int pagina = 1; pagina <= Model.TotalPage; pagina++)
+                    {
+                        if (Model.PageNum == pagina)
+                        {
+                            <li class="pagination-sm active"><a href="#">@pagina</a></li>
+                        }
+                        else
+                        {
+                            <li class="pagination-sm">@Html.ActionLink(pagina.ToString(), "Index", "Autorizacao", new { pagina = pagina }, null)</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+
+    <div class="text-left">
+        <p>
+            <span> ads asd asd</span>
+        </p>
+    </div>
+</div>

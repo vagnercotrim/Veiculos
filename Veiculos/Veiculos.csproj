@@ -192,6 +192,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AutorizacaoController.cs" />
     <Compile Include="Controllers\CombustivelController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HodometroController.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Controllers\MotoristaController.cs" />
     <Compile Include="Controllers\NHibernateController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
+    <Compile Include="DAO\AutorizacaoCirculacaoDAO.cs" />
     <Compile Include="DAO\CombustivelDAO.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
@@ -225,9 +227,11 @@
     <Compile Include="Infra\Notice\NoticeHelper.cs" />
     <Compile Include="Infra\Notice\NoticeType.cs" />
     <Compile Include="Infra\Notice\ToastrHelper.cs" />
+    <Compile Include="Models\AutorizacaoCirculacao.cs" />
     <Compile Include="Models\Combustivel.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Hodometro.cs" />
+    <Compile Include="Models\Mapping\AutorizacaoCirculacaoMap.cs" />
     <Compile Include="Models\Mapping\CombustivelMap.cs" />
     <Compile Include="Models\Mapping\FuncionarioMap.cs" />
     <Compile Include="Models\Mapping\HodometroMap.cs" />
@@ -377,6 +381,7 @@
     <Content Include="Views\Motorista\Index.cshtml" />
     <Content Include="Views\Motorista\Novo.cshtml" />
     <Content Include="Views\Motorista\Detalhar.cshtml" />
+    <Content Include="Views\Autorizacao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
