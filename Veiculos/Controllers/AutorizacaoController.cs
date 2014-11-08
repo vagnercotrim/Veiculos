@@ -84,6 +84,7 @@ namespace Veiculos.Controllers
                 {
                     _autorizacaoCirculacaoDao.Save(autorizacao);
 
+                    this.Success("Autorização para circulação cadastrada com sucesso.");
                     return RedirectToAction("Index", "Autorizacao", new {id = autorizacao.Id});
                 }
 
