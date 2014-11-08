@@ -21,10 +21,10 @@ namespace Veiculos.Models.Validation
             RuleFor(h => h.DataLeitura).LessThanOrEqualTo(DateTime.Now);
             RuleFor(h => h.Quilometragem).GreaterThan((decimal) 0.0);
 
-            RuleFor(h => h.Quilometragem).GreaterThanOrEqualTo(x => VerificaQuilometragem(x.Veiculo)).WithMessage("A quilometragem deve ser maior que o último registro.");
+            RuleFor(h => h.Quilometragem).GreaterThanOrEqualTo(x => UltimaQuilometragem(x.Veiculo)).WithMessage("A quilometragem deve ser maior que o último registro.");
         }
 
-        public decimal VerificaQuilometragem(Veiculo veiculo)
+        public decimal UltimaQuilometragem(Veiculo veiculo)
         {
             try
             {
