@@ -15,26 +15,34 @@ namespace Veiculos.Infra.HtmlHelpers
 
             for (int i = 1; i <= paging.TotalPage; i++)
             {
-                TagBuilder li = new TagBuilder("li");
-                li.AddCssClass("pagination-sm");
-
-                if (paging.PageNum == i)
-                {
-                    li.AddCssClass("active");
-                }
-
-                TagBuilder a = new TagBuilder("a");
-                a.MergeAttribute("href", url(i));
-                a.InnerHtml = i.ToString();
-
-                li.InnerHtml = a.ToString();
-
-                paginas.Append(li.ToString());
+                TagBuilder li = Li(paging, i, A(url, i));
+                paginas.Append(li);
             }
 
             paginas.Append("</ul>");
             return MvcHtmlString.Create(paginas.ToString());
         }
 
+        private static TagBuilder Li<T>(Paging<T> paging,int i, TagBuilder tag)
+        {
+            TagBuilder li = new TagBuilder("li");
+            li.AddCssClass("pagination-sm");
+
+            if (paging.PageNum == i)
+                li.AddCssClass("active");
+            
+            li.InnerHtml = tag.ToString();
+
+            return li;
+        }
+
+        private static TagBuilder A(Func<int, string> url, int i)
+        {
+            TagBuilder a = new TagBuilder("a");
+            a.MergeAttribute("href", url(i));
+            a.InnerHtml = i.ToString();
+
+            return a;
+        }
     }
 }
