@@ -28,7 +28,7 @@ namespace Veiculos.Controllers
         }
 
 
-        [Route("autorizacao")]
+        [Route("autorizacao/{pagina?}")]
         public ActionResult Index(int pagina = 1)
         {
             Paging<AutorizacaoCirculacao> veiculos = _autorizacaoCirculacaoDao.GetAll(pagina, 15);

@@ -20,7 +20,7 @@ namespace Veiculos.Controllers
             _validation = validation;
         }
 
-        [Route("funcionario")]
+        [Route("funcionario/{pagina?}")]
         public ActionResult Index(int pagina = 1)
         {
             Paging<Funcionario> funcionarios = _funcionarioDao.GetAll(pagina, 5);

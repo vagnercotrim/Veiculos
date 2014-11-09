@@ -22,7 +22,7 @@ namespace Veiculos.Controllers
             _combustivelDao = combustivelDao;
         }
 
-        [Route("veiculo")]
+        [Route("veiculo/{pagina?}")]
         public ActionResult Index(Situacao? situacao, int pagina = 1)
         {
             ViewBag.Situacao = situacao;

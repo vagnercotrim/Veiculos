@@ -22,7 +22,7 @@ namespace Veiculos.Controllers
             _funcionarioDao = funcionarioDao;
         }
 
-        [Route("motorista")]
+        [Route("motorista/{pagina?}")]
         public ActionResult Index(int pagina = 1)
         {
             Paging<Motorista> veiculos = _motoristaDao.GetAll(pagina, 5);
