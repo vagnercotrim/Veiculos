@@ -1,4 +1,5 @@
 ﻿@using Veiculos.Infra.Extensions
+@using Veiculos.Infra.HtmlHelpers
 @model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Veiculo>
 
 @{
@@ -37,50 +38,38 @@
                     <tbody>
                         @foreach (var item in Model.List)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AnoModelo) / @Html.DisplayFor(modelItem => item.AnoFabricacao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Fabricante)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Modelo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Placa)
-                                </td>
-                                <td>
-                                    @item.Situacao.GetEnumDescription()
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Hodometro", "Index", "Hodometro", new { id = item.Id }, null) |
-                                    @Html.ActionLink("Autorização", "Novo", "Autorizacao", new { id = item.Id }, null) |
-                                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                                    @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AnoModelo) / @Html.DisplayFor(modelItem => item.AnoFabricacao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fabricante)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Modelo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Placa)
+                            </td>
+                            <td>
+                                @item.Situacao.GetEnumDescription()
+                            </td>
+                            <td>
+                                @Html.ActionLink("Hodometro", "Index", "Hodometro", new { id = item.Id }, null) |
+                                @Html.ActionLink("Autorização", "Novo", "Autorizacao", new { id = item.Id }, null) |
+                                @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                                @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
             </div>
 
             <div class="text-right">
-                <ul class="pagination">
-
-                    @for (int pagina = 1; pagina <= Model.TotalPage; pagina++)
-                    {
-                        if (Model.PageNum == pagina)
-                        {
-                            <li class="pagination-sm active"><a href="#">@pagina</a></li>
-                        }
-                        else
-                        {
-                            <li class="pagination-sm">@Html.ActionLink(pagina.ToString(), "Index", "Veiculo", new { pagina = pagina }, null)</li>
-                        }
-                    }
-                </ul>
+                @Html.Paginas(Model, x => Url.Action("Index", "Veiculo", new { situacao = ViewBag.Situacao, pagina = x }))
             </div>
+
         </div>
     </div>
 </div>

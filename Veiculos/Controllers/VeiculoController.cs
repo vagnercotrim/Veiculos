@@ -25,6 +25,8 @@ namespace Veiculos.Controllers
         [Route("veiculo")]
         public ActionResult Index(Situacao? situacao, int pagina = 1)
         {
+            ViewBag.Situacao = situacao;
+
             Paging<Veiculo> veiculos = _veiculoDao.GetAll(situacao, pagina, 5);
 
             return View(veiculos);

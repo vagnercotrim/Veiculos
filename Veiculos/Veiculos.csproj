@@ -214,6 +214,7 @@
     <Compile Include="Infra\Extensions\EnumExtension.cs" />
     <Compile Include="Infra\Extensions\ListExtensions.cs" />
     <Compile Include="Infra\FluentValidation\NinjectValidatorFactory.cs" />
+    <Compile Include="Infra\HtmlHelpers\PaginacaoHelper.cs" />
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
     <Compile Include="Infra\NHibernate\SessionFactoryProvider.cs" />

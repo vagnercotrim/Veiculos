@@ -1,4 +1,5 @@
-﻿@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Motorista>
+﻿@using Veiculos.Infra.HtmlHelpers
+@model Veiculos.Infra.NHibernate.Paging<Veiculos.Models.Motorista>
 
 @{
     ViewBag.Title = "Index";
@@ -69,23 +70,11 @@
                     </tbody>
                 </table>
             </div>
-
+            
             <div class="text-right">
-                <ul class="pagination">
-
-                    @for (int pagina = 1; pagina <= Model.TotalPage; pagina++)
-                    {
-                        if (Model.PageNum == pagina)
-                        {
-                            <li class="pagination-sm active"><a href="#">@pagina</a></li>
-                        }
-                        else
-                        {
-                            <li class="pagination-sm">@Html.ActionLink(pagina.ToString(), "Index", "Veiculo", new { pagina = pagina }, null)</li>
-                        }
-                    }
-                </ul>
+                @Html.Paginas(Model, x => Url.Action("Index", "Motorista", new { pagina = x }))
             </div>
+
         </div>
     </div>
 </div>
