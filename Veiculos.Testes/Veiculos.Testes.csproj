@@ -70,6 +70,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DAO\VeiculoDAOTest.cs" />
+    <Compile Include="DAO\VeiculoSeed.cs" />
     <Compile Include="Helper\InMemoryDatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

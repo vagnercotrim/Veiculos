@@ -14,18 +14,12 @@ namespace Veiculos.Testes.DAO
         private VeiculoDAO _dao;
 
         [SetUp]
-        public void Init()
+        public void SetUp()
         {
             _paginate = new CriteriaPaginate(Session);
             _dao = new VeiculoDAO(Session, _paginate);
 
-            PopulaVeiculo(_dao);
-        }
-
-        private void PopulaVeiculo(VeiculoDAO dao)
-        {
-            for (int i = 2001; i <= 2027; i++)
-                dao.Save(new Veiculo {AnoFabricacao = i, AnoModelo = i, Fabricante = "Fa", Modelo = "Mo", Placa = "DDD-" + i});
+            VeiculoSeed.CriaVariosVeiculos(_dao, 2001, 2027);
         }
 
         [Test]
