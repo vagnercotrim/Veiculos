@@ -1,4 +1,6 @@
-﻿using NHibernate;
+﻿using System;
+using NHibernate;
+using NHibernate.Criterion;
 using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
 
@@ -32,12 +34,29 @@ namespace Veiculos.DAO
         {
             _dao.Update(autorizacao);
         }
-        
+
         public Paging<AutorizacaoCirculacao> GetAll(int pagina, int registros)
         {
             ICriteria criteria = _session.CreateCriteria<AutorizacaoCirculacao>();
 
             return _paginate.GetResult<AutorizacaoCirculacao>(criteria, pagina, registros);
+        }
+
+        public int ProximoNumero(int ano)
+        {
+            try
+            {
+                IFutureValue<int> criteria = _session.CreateCriteria<AutorizacaoCirculacao>()
+                    .Add(Restrictions.Eq("Ano", ano))
+                    .SetProjection(Projections.Max("Numero"))
+                    .FutureValue<int>();
+
+                return criteria.Value + 1;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
         }
 
     }

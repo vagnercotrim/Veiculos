@@ -73,8 +73,8 @@ namespace Veiculos.Controllers
         [Transaction]
         public ActionResult Novo(AutorizacaoCirculacao autorizacao)
         {
-            autorizacao.Numero = 1; // TODO Implementar classe para gerar o número automaticamente 
             autorizacao.Ano = autorizacao.Data.Year;
+            autorizacao.Numero = _autorizacaoCirculacaoDao.ProximoNumero(autorizacao.Ano);
 
             try
             {
