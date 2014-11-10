@@ -18,8 +18,8 @@ namespace Veiculos.Infra.NHibernate
 
         public Paging<T> GetResult<T>(ICriteria criteria, int pageNum, int pageSize)
         {
-            ICriteria criteriaRowCount = criteria.Clone() as ICriteria;
-            
+            var criteriaRowCount = Clone<T>(criteria);
+
             IList results = _session.CreateMultiCriteria()
                                 .Add(criteria.SetFirstResult((pageNum - 1) * pageSize).SetMaxResults(pageSize))
                                 .Add(criteriaRowCount.SetProjection(Projections.RowCountInt64()))
@@ -30,6 +30,14 @@ namespace Veiculos.Infra.NHibernate
             long count = (long)((IList)results[1])[0];
 
             return new Paging<T>(all, pageSize, pageNum, TotalPage(pageSize, count), count);
+        }
+
+        private static ICriteria Clone<T>(ICriteria criteria)
+        {
+            ICriteria criteriaRowCount = criteria.Clone() as ICriteria;
+            criteriaRowCount.ClearOrders();
+            
+            return criteriaRowCount;
         }
 
         private static int TotalPage(int pageSize, long count)

@@ -34,10 +34,12 @@ namespace Veiculos.DAO
         {
             _dao.Update(autorizacao);
         }
-
+        
         public Paging<AutorizacaoCirculacao> GetAll(int pagina, int registros)
         {
-            ICriteria criteria = _session.CreateCriteria<AutorizacaoCirculacao>();
+            ICriteria criteria = _session.CreateCriteria<AutorizacaoCirculacao>()
+                .AddOrder(Order.Desc("Ano"))
+                .AddOrder(Order.Desc("Numero"));
 
             return _paginate.GetResult<AutorizacaoCirculacao>(criteria, pagina, registros);
         }
