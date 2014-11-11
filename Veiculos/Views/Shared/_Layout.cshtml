@@ -35,7 +35,7 @@
                 </button>
                 <a class="navbar-brand" href="@Url.Action("Index","Home")">Veículos</a>
             </div>
-            
+
             @{ Html.RenderPartial("_menuusuario"); }
 
             <div class="navbar-default sidebar" role="navigation">
@@ -44,9 +44,7 @@
         </nav>
 
         <div id="page-wrapper">
-            <div class="row">
-                @RenderBody()
-            </div>
+            @RenderBody()
         </div>
 
     </div>
@@ -54,7 +52,7 @@
     <script src="/Content/sbadmin/js/bootstrap.min.js"></script>
     <script src="/Content/sbadmin/js/plugins/metisMenu/metisMenu.min.js"></script>
     <script src="/Content/sbadmin/js/sb-admin-2.js"></script>
-    
+
     <script src="~/Scripts/jquery.signalR-2.1.2.js"></script>
     <script src="~/SignalR/hubs"></script>
     <script src="~/Scripts/Custom/timer.js"></script>

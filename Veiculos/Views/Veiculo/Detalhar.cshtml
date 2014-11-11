@@ -4,101 +4,102 @@
     ViewBag.Title = "Detalhar";
 }
 
-<br />
+<div class="row">
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Veículos
-        </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Veículos
+            </div>
 
-        <div class="panel-body">
-            <div class="table-responsive">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.AnoModelo)
-                    </dt>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AnoModelo)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.AnoModelo)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.AnoModelo)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.AnoFabricacao)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AnoFabricacao)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.AnoFabricacao)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.AnoFabricacao)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Fabricante)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Fabricante)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Fabricante)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Fabricante)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Modelo)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Modelo)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Modelo)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Modelo)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Placa)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Placa)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Placa)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Placa)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DataAquisicao)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DataAquisicao)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.DataAquisicao)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.DataAquisicao)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Situacao)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Situacao)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Situacao)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Situacao)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CapacidadeTanque)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CapacidadeTanque)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.CapacidadeTanque)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.CapacidadeTanque)
+                        </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Combustivel)
-                    </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Combustivel)
+                        </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Combustivel.Descricao)
-                    </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Combustivel.Descricao)
+                        </dd>
 
-                </dl>
+                    </dl>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="col-lg-12">
+    <div class="col-lg-12">
 
-    <div class="text-left">
-        <p>
-            @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>
+        <div class="text-left">
+            <p>
+                @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
     </div>
 </div>

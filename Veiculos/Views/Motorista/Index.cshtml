@@ -5,43 +5,43 @@
     ViewBag.Title = "Index";
 }
 
-<br />
+<div class="row">
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Veículos
-        </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Veículos
+            </div>
 
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>
-                                <span>Nome</span>
-                            </th>
-                            <th>
-                                <span>Número</span>
-                            </th>
-                            <th>
-                                <span>Registro</span>
-                            </th>
-                            <th>
-                                <span>Categoria</span>
-                            </th>
-                            <th>
-                                <span>Validade CNH</span>
-                            </th>
-                            <th>
-                                <span>Observação</span>
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.List)
-                        {
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span>Nome</span>
+                                </th>
+                                <th>
+                                    <span>Número</span>
+                                </th>
+                                <th>
+                                    <span>Registro</span>
+                                </th>
+                                <th>
+                                    <span>Categoria</span>
+                                </th>
+                                <th>
+                                    <span>Validade CNH</span>
+                                </th>
+                                <th>
+                                    <span>Observação</span>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.List)
+                            {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Funcionario.Nome)
@@ -66,24 +66,25 @@
                                     @Html.ActionLink("Detalhar", "Detalhar", new { id = item.Id })
                                 </td>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="text-right">
-                @Html.Paginas(Model, x => Url.Action("Index", "Motorista", new { pagina = x }))
-            </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
+                <div class="text-right">
+                    @Html.Paginas(Model, x => Url.Action("Index", "Motorista", new { pagina = x }))
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 
-<div class="col-lg-12">
+    <div class="col-lg-12">
 
-    <div class="text-left">
-        <p>
-            @Html.ActionLink("Novo", "Novo", "Motorista", null, new { @class = "btn btn-default" })
-        </p>
+        <div class="text-left">
+            <p>
+                @Html.ActionLink("Novo", "Novo", "Motorista", null, new { @class = "btn btn-default" })
+            </p>
+        </div>
     </div>
 </div>

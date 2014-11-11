@@ -4,52 +4,52 @@
     ViewBag.Title = "Index";
 }
 
-<br />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Combustíveis
+            </div>
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Combustíveis
-        </div>
-
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Descricao)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Preco)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Descricao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Preco)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "Editar", new { id = item.Id })
-                                </td>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Descricao)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Preco)
+                                </th>
+                                <th></th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                        {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Preco)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                                    </td>
+                                </tr>
                         }
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="col-lg-12">
-    <p>
-        @Html.ActionLink("Novo", "Novo", "Combustivel", null, new { @class = "btn btn-default" })
-    </p>
+    <div class="col-lg-12">
+        <p>
+            @Html.ActionLink("Novo", "Novo", "Combustivel", null, new { @class = "btn btn-default" })
+        </p>
+    </div>
 </div>
