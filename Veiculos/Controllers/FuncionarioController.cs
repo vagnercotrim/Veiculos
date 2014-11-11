@@ -47,6 +47,7 @@ namespace Veiculos.Controllers
                 {
                     _funcionarioDao.Save(funcionario);
 
+                    this.Success("O funcionário foi cadastrado com sucesso.");
                     return RedirectToAction("Detalhar", "Funcionario", new { id = funcionario.Id });
                 }
 
