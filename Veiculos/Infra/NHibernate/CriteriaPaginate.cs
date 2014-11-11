@@ -18,21 +18,23 @@ namespace Veiculos.Infra.NHibernate
 
         public Paging<T> GetResult<T>(ICriteria criteria, int pageNum, int pageSize)
         {
-            var criteriaRowCount = Clone(criteria);
+            IEnumerable<T> lista = criteria.SetFirstResult((pageNum - 1) * pageSize)
+                                           .SetMaxResults(pageSize)
+                                           .List<T>();
 
-            IList results = _session.CreateMultiCriteria()
-                                .Add(criteria.SetFirstResult((pageNum - 1) * pageSize).SetMaxResults(pageSize))
-                                .Add(criteriaRowCount.SetProjection(Projections.RowCountInt64()))
-                                .List();
+            var count = TotalCount(criteria);
 
-            IEnumerable<T> all = ArrayToEnumerable<T>(results);
-
-            long count = (long)((IList)results[1])[0];
-
-            return new Paging<T>(all, pageSize, pageNum, TotalPage(pageSize, count), count);
+            return new Paging<T>(lista, pageSize, pageNum, TotalPage(pageSize, count), count);
         }
 
-        private static ICriteria Clone(ICriteria criteria)
+        private long TotalCount(ICriteria criteria)
+        {
+            var criteriaRowCount = Clone(criteria);
+
+            return criteriaRowCount.SetProjection(Projections.RowCountInt64()).UniqueResult<long>();
+        }
+
+        private ICriteria Clone(ICriteria criteria)
         {
             ICriteria criteriaClone = criteria.Clone() as ICriteria;
             criteriaClone.ClearOrders();
@@ -40,15 +42,10 @@ namespace Veiculos.Infra.NHibernate
             return criteriaClone;
         }
 
-        private static int TotalPage(int pageSize, long count)
+        private int TotalPage(int pageSize, long count)
         {
-            return (int) Math.Ceiling(count/(decimal) pageSize);
+            return (int)Math.Ceiling(count / (decimal)pageSize);
         }
 
-        private IEnumerable<T> ArrayToEnumerable<T>(IList results)
-        {
-            foreach (var o in (IList) results[0])
-                yield return (T) o;
-        }
     }
 }
