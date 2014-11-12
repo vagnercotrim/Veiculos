@@ -87,7 +87,6 @@ namespace Veiculos.Controllers
             try
             {
                 Veiculo noBanco = _veiculoDao.Get(veiculo.Id);
-                veiculo.Situacao = noBanco.Situacao;
 
                 ValidationResult result = _validation.Validate(veiculo);
 
