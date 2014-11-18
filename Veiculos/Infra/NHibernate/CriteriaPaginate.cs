@@ -18,11 +18,11 @@ namespace Veiculos.Infra.NHibernate
 
         public Paging<T> GetResult<T>(ICriteria criteria, int pageNum, int pageSize)
         {
+            var count = TotalCount(criteria);
+
             IEnumerable<T> lista = criteria.SetFirstResult((pageNum - 1) * pageSize)
                                            .SetMaxResults(pageSize)
                                            .List<T>();
-
-            var count = TotalCount(criteria);
 
             return new Paging<T>(lista, pageSize, pageNum, TotalPage(pageSize, count), count);
         }
