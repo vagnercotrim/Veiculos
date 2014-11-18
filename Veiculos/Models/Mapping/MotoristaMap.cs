@@ -13,6 +13,13 @@ namespace Veiculos.Models.Mapping
         {
             Id(m => m.Id);
 
+            Map();
+
+            References(m => m.Funcionario);
+        }
+
+        private void Map()
+        {
             Map(m => m.Numero).Not.Nullable().Unique();
             Map(m => m.Registro).Not.Nullable().Unique();
             Map(m => m.Categoria).Not.Nullable().Length(2);
@@ -20,9 +27,6 @@ namespace Veiculos.Models.Mapping
             Map(m => m.Emissao).Not.Nullable();
             Map(m => m.Validade).Not.Nullable();
             Map(m => m.Observacao);
-
-            References(m => m.Funcionario);
         }
-
     }
 }

@@ -9,6 +9,20 @@ namespace Veiculos.Models.Mapping
         {
             Id(a => a.Id);
 
+            Map();
+
+            References();
+        }
+
+        private void References()
+        {
+            References(a => a.Veiculo);
+            References(a => a.Motorista);
+            References(a => a.QuemAutorizou);
+        }
+
+        private void Map()
+        {
             Map(a => a.Numero).Not.Nullable();
             Map(a => a.Ano).Not.Nullable();
             Map(a => a.Data).Not.Nullable();
@@ -16,11 +30,6 @@ namespace Veiculos.Models.Mapping
             Map(a => a.Termino).Not.Nullable();
             Map(a => a.Finalidade).Not.Nullable();
             Map(a => a.Observacao).Not.Nullable();
-
-            References(a => a.Veiculo);
-            References(a => a.Motorista);
-            References(a => a.QuemAutorizou);
         }
-
     }
 }

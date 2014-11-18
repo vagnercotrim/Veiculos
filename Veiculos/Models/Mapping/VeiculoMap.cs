@@ -9,6 +9,13 @@ namespace Veiculos.Models.Mapping
         {
             Id(v => v.Id);
 
+            Map();
+
+            References(v => v.Combustivel);
+        }
+
+        private void Map()
+        {
             Map(v => v.AnoModelo).Not.Nullable();
             Map(v => v.AnoFabricacao).Not.Nullable();
             Map(v => v.Fabricante).Not.Nullable();
@@ -17,9 +24,6 @@ namespace Veiculos.Models.Mapping
             Map(v => v.DataAquisicao).Not.Nullable();
             Map(v => v.Situacao).Not.Nullable();
             Map(v => v.CapacidadeTanque).Not.Nullable();
-
-            References(v => v.Combustivel);
         }
-
     }
 }
