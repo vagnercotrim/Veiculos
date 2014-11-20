@@ -16,7 +16,7 @@ namespace Veiculos.Testes.DAO
         [SetUp]
         public void SetUp()
         {
-            _paginate = new CriteriaPaginate(Session);
+            _paginate = new CriteriaPaginate();
             _dao = new VeiculoDAO(Session, _paginate);
 
             VeiculoSeed.CriaVariosVeiculos(_dao, 2001, 2027);
