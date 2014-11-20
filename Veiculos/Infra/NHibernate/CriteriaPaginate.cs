@@ -9,13 +9,6 @@ namespace Veiculos.Infra.NHibernate
     public class CriteriaPaginate
     {
 
-        private readonly ISession _session;
-
-        public CriteriaPaginate(ISession session)
-        {
-            _session = session;
-        }
-
         public Paging<T> GetResult<T>(ICriteria criteria, int pageNum, int pageSize)
         {
             var count = TotalCount(criteria);
