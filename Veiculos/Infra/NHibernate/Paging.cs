@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Veiculos.Infra.NHibernate
 {
@@ -11,12 +12,12 @@ namespace Veiculos.Infra.NHibernate
         public int TotalPage { get; private set; }
         public long TotalCount { get; private set; }
 
-        public Paging(IEnumerable<T> list, int pageSize, int pageNum, int totalPage, long totalCount)
+        public Paging(IEnumerable<T> list, int pageSize, int pageNum, long totalCount)
         {
             List = list;
             PageSize = pageSize;
             PageNum = pageNum;
-            TotalPage = totalPage;
+            TotalPage = (int)Math.Ceiling(totalCount / (decimal)pageSize);
             TotalCount = totalCount;
         }
 

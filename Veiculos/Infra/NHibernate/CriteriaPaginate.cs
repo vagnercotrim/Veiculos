@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using NHibernate;
+﻿using NHibernate;
 using NHibernate.Criterion;
+using System.Collections.Generic;
 
 namespace Veiculos.Infra.NHibernate
 {
@@ -11,20 +9,18 @@ namespace Veiculos.Infra.NHibernate
 
         public Paging<T> GetResult<T>(ICriteria criteria, int pageNum, int pageSize)
         {
-            var count = TotalCount(criteria);
+            var count = TotalCount(Clone(criteria));
 
             IEnumerable<T> lista = criteria.SetFirstResult((pageNum - 1) * pageSize)
                                            .SetMaxResults(pageSize)
                                            .List<T>();
 
-            return new Paging<T>(lista, pageSize, pageNum, TotalPage(pageSize, count), count);
+            return new Paging<T>(lista, pageSize, pageNum, count);
         }
 
         private long TotalCount(ICriteria criteria)
         {
-            var criteriaRowCount = Clone(criteria);
-
-            return criteriaRowCount.SetProjection(Projections.RowCountInt64()).UniqueResult<long>();
+            return criteria.SetProjection(Projections.RowCountInt64()).UniqueResult<long>();
         }
 
         private ICriteria Clone(ICriteria criteria)
@@ -33,11 +29,6 @@ namespace Veiculos.Infra.NHibernate
             criteriaClone.ClearOrders();
 
             return criteriaClone;
-        }
-
-        private int TotalPage(int pageSize, long count)
-        {
-            return (int)Math.Ceiling(count / (decimal)pageSize);
         }
 
     }
