@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
 using NHibernate.Criterion;
 using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
+using Veiculos.ViewModels;
 
 namespace Veiculos.DAO
 {
@@ -34,7 +38,7 @@ namespace Veiculos.DAO
         {
             _dao.Update(autorizacao);
         }
-        
+
         public Paging<AutorizacaoCirculacao> GetAll(int pagina, int registros)
         {
             ICriteria criteria = _session.CreateCriteria<AutorizacaoCirculacao>()
@@ -59,6 +63,30 @@ namespace Veiculos.DAO
             {
                 return 1;
             }
+        }
+
+        public IList<QuantitativoMesAno> QuantitativoPorMesEAno()
+        {
+            string formatedDateSql = string.Format("month({{alias}}.[{0}]) as mydate", "Data");
+            string formatedDateGroupBy = string.Format("month({{alias}}.[{0}])", "Data");
+
+            ICriteria criteria = _session.CreateCriteria<AutorizacaoCirculacao>()
+                .SetProjection(Projections.ProjectionList()
+                    .Add(Projections.GroupProperty("Ano"))
+                    .Add(Projections.SqlGroupProjection(formatedDateSql, formatedDateGroupBy, new[] {"mydate"},
+                        new[] {NHibernateUtil.Int32}))
+                    .Add(Projections.Count("Ano"))
+                );
+
+            return (criteria.List().Cast<IList>().Select(
+                        entry =>
+                        new QuantitativoMesAno
+                        {
+                            Ano = (int)entry[0],
+                            Mes = (int)entry[1],
+                            Total = (int)entry[2]
+                        })
+                    ).ToList();
         }
 
     }
