@@ -221,6 +221,7 @@
     <Compile Include="Infra\HtmlHelpers\PaginacaoHelper.cs" />
     <Compile Include="Infra\NHibernate\Paging.cs" />
     <Compile Include="Infra\NHibernate\CriteriaPaginate.cs" />
+    <Compile Include="Infra\NHibernate\ProjectionsHelper.cs" />
     <Compile Include="Infra\NHibernate\SessionFactoryProvider.cs" />
     <Compile Include="Infra\NHibernate\StatisticsProvider.cs" />
     <Compile Include="Infra\NHibernate\TransactionAttribute.cs" />

@@ -67,16 +67,12 @@ namespace Veiculos.DAO
 
         public IList<QuantitativoMesAno> QuantitativoPorMesEAno()
         {
-            string formatedDateSql = string.Format("month({{alias}}.[{0}]) as mydate", "Data");
-            string formatedDateGroupBy = string.Format("month({{alias}}.[{0}])", "Data");
-
             ICriteria criteria = _session.CreateCriteria<AutorizacaoCirculacao>()
-                .SetProjection(Projections.ProjectionList()
-                    .Add(Projections.GroupProperty("Ano"))
-                    .Add(Projections.SqlGroupProjection(formatedDateSql, formatedDateGroupBy, new[] {"mydate"},
-                        new[] {NHibernateUtil.Int32}))
-                    .Add(Projections.Count("Ano"))
-                );
+                                         .SetProjection(Projections.ProjectionList()
+                                             .Add(Projections.GroupProperty("Ano"))
+                                             .Add(ProjectionsHelper.GroupMonthOfDate("Data", "mydate"))
+                                             .Add(Projections.Count("Ano"))
+                                         );
 
             return (criteria.List().Cast<IList>().Select(
                         entry =>
