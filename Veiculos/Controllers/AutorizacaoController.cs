@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using FluentValidation.Results;
 using Veiculos.DAO;
 using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
 using Veiculos.Models.Validation;
+using Veiculos.ViewModels;
 
 namespace Veiculos.Controllers
 {
@@ -27,12 +31,20 @@ namespace Veiculos.Controllers
             _validation = validation;
         }
 
+        [Route("autorizacao/quantitativo")]
+        public ActionResult Quantitativo()
+        {
+            IList<QuantitativoMesAno> estat = _autorizacaoCirculacaoDao.QuantitativoPorMesEAno();
+            ViewBag.dados = estat;
+
+            return View();
+        }
 
         [Route("autorizacao/{pagina?}")]
         public ActionResult Index(int pagina = 1)
         {
             Paging<AutorizacaoCirculacao> veiculos = _autorizacaoCirculacaoDao.GetAll(pagina, 15);
-
+            
             return View(veiculos);
         }
 

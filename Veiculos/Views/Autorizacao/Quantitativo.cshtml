@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Quantitativo";
+}
+
+<h2>Quantitativo</h2>
+
+<div>
+    Morris
+    <div id="myfirstchart" style="height: 250px; ">
+    </div>
+</div>
+
+@section Css
+{
+    <link href="/Content/sbadmin/css/plugins/morris.css" rel="stylesheet">
+}
+
+@section Scripts
+{
+    <script src="/Content/sbadmin/js/plugins/morris/raphael.min.js"></script>
+    <script src="/Content/sbadmin/js/plugins/morris/morris.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            Morris.Line({
+                element: 'myfirstchart',
+                data: [
+                    @foreach (var m in ViewBag.dados)
+                    {
+                        @Html.Raw("{y: '" + @m.Ano + "-" + @m.Mes + "', total: " + @m.Total + "}, ")
+                    }
+                ],
+                xkey: 'y',
+                ykeys: ['total'],
+                labels: ['Value']
+            });
+        });
+    </script>
+}

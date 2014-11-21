@@ -391,6 +391,7 @@
     <Content Include="Views\Motorista\Detalhar.cshtml" />
     <Content Include="Views\Autorizacao\Index.cshtml" />
     <Content Include="Views\Autorizacao\Novo.cshtml" />
+    <Content Include="Views\Autorizacao\Quantitativo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
