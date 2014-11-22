@@ -72,12 +72,11 @@ namespace Veiculos.Controllers
 
             ViewBag.Veiculo = veiculo;
 
-            ViewBag.Motoristas = _motoristaDao.GetAll();
-            ViewBag.Funcionarios = _funcionarioDao.GetAll();
+            LoadResources();
 
             return View();
         }
-        
+
         [HttpPost]
         [Route("veiculo/{id:int}/autorizacao/nova")]
         [Transaction]
@@ -100,8 +99,7 @@ namespace Veiculos.Controllers
 
                 ViewBag.Veiculo = _veiculoDao.Get(autorizacao.Veiculo.Id);
 
-                ViewBag.Motoristas = _motoristaDao.GetAll();
-                ViewBag.Funcionarios = _funcionarioDao.GetAll();
+                LoadResources();
 
                 return View(autorizacao);
             }
@@ -109,6 +107,58 @@ namespace Veiculos.Controllers
             {
                 return View(autorizacao);
             }
+        }
+
+        [Route("autorizacao/{id:int}/editar")]
+        public ActionResult Editar(int id)
+        {
+            AutorizacaoCirculacao autorizacao = _autorizacaoCirculacaoDao.Get(id);
+
+            if (autorizacao == null)
+            {
+                this.Info("Autorização para circulação não encontrada.");
+                return RedirectToAction("Index");
+            }
+
+            LoadResources();
+
+            return View(autorizacao);
+        }
+        
+        [HttpPost]
+        [Route("autorizacao/{id:int}/editar")]
+        [Transaction]
+        public ActionResult Editar(AutorizacaoCirculacao autorizacao)
+        {
+
+            try
+            {
+                ValidationResult result = _validation.Validate(autorizacao);
+
+                if (result.IsValid)
+                {
+                    _autorizacaoCirculacaoDao.Update(autorizacao);
+
+                    this.Success("Autorização para circulação editada com sucesso.");
+                    return RedirectToAction("Index", "Autorizacao", new { id = autorizacao.Id });
+                }
+
+
+                LoadResources();
+
+                return View(autorizacao);   
+            }
+            catch (Exception)
+            {
+
+                return View(autorizacao);   
+            }
+        }
+
+        private void LoadResources()
+        {
+            ViewBag.Motoristas = _motoristaDao.GetAll();
+            ViewBag.Funcionarios = _funcionarioDao.GetAll();
         }
 
     }
