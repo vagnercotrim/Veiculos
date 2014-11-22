@@ -1,0 +1,22 @@
+﻿@model Veiculos.Models.AutorizacaoCirculacao
+
+@{
+    ViewBag.Title = "Imprimir";
+    Layout = null;
+}
+
+@for (int i = 1; i <= 3; i++)
+{
+    <hr />
+
+    <h4>Autorização N. @Model.Numero/SETOR/ORGAO/@Model.Ano</h4>
+    <h4>Cidade, @Model.Data.ToShortDateString()</h4>
+    
+    <p>@Model.Finalidade</p>
+    <p>OBS.: @Model.Observacao</p>
+
+    <p>@Model.QuemAutorizou.Nome</p>
+    <p>@Model.QuemAutorizou.Cargo</p>
+    <p>Cadastro: @Model.QuemAutorizou.Cadastro</p>
+    <span>@i via</span>
+}

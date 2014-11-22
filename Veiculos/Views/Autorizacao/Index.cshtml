@@ -57,7 +57,8 @@
                                         @Html.DisplayFor(modelItem => item.Termino)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Editar", "Editar", "Autorizacao", new { id = item.Id}, new { @class = "btn btn-default" })
+                                        @Html.ActionLink("Editar", "Editar", "Autorizacao", new { id = item.Id }, new { @class = "btn btn-default" })
+                                        @Html.ActionLink("Imprimir", "Imprimir", "Autorizacao", new { id = item.Id}, new { @class = "btn btn-default" })
                                     </td>
                                 </tr>
                         }

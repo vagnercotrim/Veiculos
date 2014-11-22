@@ -393,6 +393,7 @@
     <Content Include="Views\Autorizacao\Novo.cshtml" />
     <Content Include="Views\Autorizacao\Quantitativo.cshtml" />
     <Content Include="Views\Autorizacao\Editar.cshtml" />
+    <Content Include="Views\Autorizacao\Imprimir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

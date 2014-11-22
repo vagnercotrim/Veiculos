@@ -161,5 +161,18 @@ namespace Veiculos.Controllers
             ViewBag.Funcionarios = _funcionarioDao.GetAll();
         }
 
+        [Route("autorizacao/{id:int}/imprimir")]
+        public ActionResult Imprimir(int id)
+        {
+            AutorizacaoCirculacao autorizacao = _autorizacaoCirculacaoDao.Get(id);
+
+            if (autorizacao == null)
+            {
+                this.Info("Autorização para circulação não encontrada.");
+                return RedirectToAction("Index");
+            }
+
+            return View(autorizacao);
+        }
     }
 }
