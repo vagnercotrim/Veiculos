@@ -1,12 +1,10 @@
 ﻿using FluentValidation.Results;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using Veiculos.DAO;
 using Veiculos.Infra.NHibernate;
 using Veiculos.Models;
 using Veiculos.Models.Validation;
-using Veiculos.ViewModels;
 
 namespace Veiculos.Controllers
 {
@@ -27,15 +25,6 @@ namespace Veiculos.Controllers
             _motoristaDao = motoristaDao;
             _funcionarioDao = funcionarioDao;
             _validation = validation;
-        }
-
-        [Route("autorizacao/quantitativo")]
-        public ActionResult Quantitativo()
-        {
-            IList<QuantitativoMesAno> estat = _autorizacaoCirculacaoDao.QuantitativoPorMesEAno();
-            ViewBag.dados = estat;
-
-            return View();
         }
 
         [Route("autorizacao/{pagina?}")]
@@ -71,7 +60,6 @@ namespace Veiculos.Controllers
             }
 
             ViewBag.Veiculo = veiculo;
-
             LoadResources();
 
             return View();
@@ -98,7 +86,6 @@ namespace Veiculos.Controllers
                 }
 
                 ViewBag.Veiculo = _veiculoDao.Get(autorizacao.Veiculo.Id);
-
                 LoadResources();
 
                 return View(autorizacao);
@@ -130,7 +117,6 @@ namespace Veiculos.Controllers
         [Transaction]
         public ActionResult Editar(AutorizacaoCirculacao autorizacao)
         {
-
             try
             {
                 ValidationResult result = _validation.Validate(autorizacao);
@@ -143,22 +129,21 @@ namespace Veiculos.Controllers
                     return RedirectToAction("Index", "Autorizacao", new { id = autorizacao.Id });
                 }
 
-
                 LoadResources();
 
                 return View(autorizacao);   
             }
             catch (Exception)
             {
-
                 return View(autorizacao);   
             }
         }
 
-        private void LoadResources()
+        [Route("autorizacao/quantitativo")]
+        public ActionResult Quantitativo()
         {
-            ViewBag.Motoristas = _motoristaDao.GetAll();
-            ViewBag.Funcionarios = _funcionarioDao.GetAll();
+            ViewBag.dados = _autorizacaoCirculacaoDao.QuantitativoPorMesEAno();
+            return View();
         }
 
         [Route("autorizacao/{id:int}/imprimir")]
@@ -174,5 +159,12 @@ namespace Veiculos.Controllers
 
             return View(autorizacao);
         }
+
+        private void LoadResources()
+        {
+            ViewBag.Motoristas = _motoristaDao.GetAll();
+            ViewBag.Funcionarios = _funcionarioDao.GetAll();
+        }
+
     }
 }
