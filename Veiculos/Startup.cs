@@ -1,9 +1,11 @@
-﻿using Hangfire;
+﻿using System;
+using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.Owin;
 using Ninject;
 using Ninject.Web.Common;
 using Owin;
+using Veiculos.Tasks;
 
 [assembly: OwinStartup(typeof(Veiculos.Startup))]
 namespace Veiculos
@@ -28,6 +30,8 @@ namespace Veiculos
                 config.UseNinjectActivator(GetKernel());
                 config.UseDashboardPath("/tarefas");
             });
+
+            RecurringJob.AddOrUpdate<VerificaAtualizacaoHodometro>(v => v.Verifica(3), Cron.Minutely);
         }
 
         private IKernel GetKernel()

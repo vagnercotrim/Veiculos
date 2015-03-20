@@ -230,6 +230,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\AlertaHub.cs" />
     <Compile Include="Hubs\MyHub.cs" />
     <Compile Include="Infra\Extensions\EnumExtension.cs" />
     <Compile Include="Infra\Extensions\ListExtensions.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Models\Veiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Tasks\VerificaAtualizacaoHodometro.cs" />
     <Compile Include="ViewModels\QuantitativoMesAno.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +357,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Custom\alert.js" />
     <Content Include="Scripts\Custom\timer.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
