@@ -50,6 +50,15 @@ namespace Veiculos.DAO
 
             return criteria.Value;
         }
+        
+        public Hodometro UltimoByVeiculo(int idVeiculo)
+        {
+            ICriteria criteria = _session.CreateCriteria<Hodometro>()
+                                        .Add(Restrictions.Eq("Veiculo.Id", idVeiculo))
+                                        .SetMaxResults(1)
+                                        .AddOrder(Order.Desc("DataLeitura"));
 
+            return criteria.UniqueResult<Hodometro>();
+        }
     }
 }
