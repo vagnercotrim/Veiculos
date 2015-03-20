@@ -25,20 +25,25 @@ namespace Veiculos.Tasks
 
             foreach (var veiculo in veiculos)
             {
-                Hodometro h = _hodometroDao.UltimoByVeiculo(veiculo.Id);
-
-                if (h != null)
+                if (DeveAtualizarHodometro(veiculo, dias))
                 {
-                    if (h.DataLeitura < DateTime.Today.AddDays(-dias))
-                    {
-                        AlertaHub.SendMessage(String.Format("Registre a quilometragem do veiculo {0}", veiculo.Placa));
-                    }
-                }
-                else
-                {
-                    AlertaHub.SendMessage(String.Format("Registre a quilometragem do veiculo {0}", veiculo.Placa));
+                    String texto = String.Format("Registre a quilometragem do veiculo {0}", veiculo.Placa);
+                    AlertaHub.SendMessage(texto);
                 }
             }
+        }
+
+        public bool DeveAtualizarHodometro(Veiculo veiculo, int dias)
+        {
+            Hodometro h = _hodometroDao.UltimoByVeiculo(veiculo.Id);
+
+            if (h == null)
+                return true;
+
+            if (h.DataLeitura < DateTime.Today.AddDays(-dias))
+                return true;
+
+            return false;
         }
     }
 }
