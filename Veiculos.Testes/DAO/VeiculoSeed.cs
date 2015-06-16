@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Veiculos.DAO;
+﻿using Veiculos.DAO;
 using Veiculos.Models;
 
 namespace Veiculos.Testes.DAO

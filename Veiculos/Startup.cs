@@ -1,5 +1,4 @@
-﻿using System;
-using Hangfire;
+﻿using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.Owin;
 using Ninject;
